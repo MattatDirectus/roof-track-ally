@@ -6,6 +6,7 @@ import { useState } from "react";
 import MessageDialog from "./MessageDialog";
 import { DocumentViewer } from "./DocumentViewer";
 import ScheduleDialog from "./ScheduleDialog";
+import TeamSection from "./TeamSection";
 
 const ProjectStatus = () => {
   const [showNotification, setShowNotification] = useState(true);
@@ -78,6 +79,9 @@ const ProjectStatus = () => {
           <p className="text-sm text-muted-foreground">Project #RF-2024-001</p>
         </div>
       </div>
+
+      {/* Team Section */}
+      <TeamSection />
 
       {/* Notification */}
       {showNotification && (
