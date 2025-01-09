@@ -80,9 +80,9 @@ const ProjectStatus = () => {
     <div className="w-full max-w-4xl mx-auto p-6 space-y-6">
       {/* Header */}
       <div className="flex justify-between items-start">
-        <div>
-          <h1 className="text-3xl font-semibold mb-2">Good afternoon, Mr. Carter!</h1>
-          <p className="text-muted-foreground">Here's the latest update on your roof renovation (#RF-2024-001)</p>
+        <div className="bg-gradient-brand p-4 rounded-lg">
+          <h1 className="text-3xl font-semibold mb-2 text-white">Good afternoon, Mr. Carter!</h1>
+          <p className="text-white/80">Here's the latest update on your roof renovation (#RF-2024-001)</p>
         </div>
         <WeatherWidget />
       </div>
