@@ -4,10 +4,12 @@ import { Progress } from "@/components/ui/progress";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useState } from "react";
 import MessageDialog from "./MessageDialog";
+import { DocumentViewer } from "./DocumentViewer";
 
 const ProjectStatus = () => {
   const [showNotification, setShowNotification] = useState(true);
   const [messageDialogOpen, setMessageDialogOpen] = useState(false);
+  const [documentViewerOpen, setDocumentViewerOpen] = useState(false);
 
   const projectStages = [
     { 
@@ -123,7 +125,10 @@ const ProjectStatus = () => {
           <MessageCircle className="w-6 h-6 text-primary mb-1" />
           <span className="text-xs">Message</span>
         </button>
-        <button className="flex flex-col items-center p-4 bg-white rounded-xl border hover:border-primary/20 transition-colors">
+        <button 
+          onClick={() => setDocumentViewerOpen(true)}
+          className="flex flex-col items-center p-4 bg-white rounded-xl border hover:border-primary/20 transition-colors"
+        >
           <FileText className="w-6 h-6 text-primary mb-1" />
           <span className="text-xs">Documents</span>
         </button>
@@ -170,6 +175,11 @@ const ProjectStatus = () => {
       <MessageDialog 
         open={messageDialogOpen} 
         onOpenChange={setMessageDialogOpen} 
+      />
+
+      <DocumentViewer
+        open={documentViewerOpen}
+        onOpenChange={setDocumentViewerOpen}
       />
     </div>
   );
