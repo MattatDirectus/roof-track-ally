@@ -1,4 +1,4 @@
-import { ProjectStatus } from "@/components/ProjectStatus";
+import ProjectStatus from "@/components/ProjectStatus";
 
 const Index = () => {
   return (
