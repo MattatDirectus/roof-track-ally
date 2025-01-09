@@ -76,12 +76,12 @@ const ProjectStatus = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-6">
+    <div className="w-full max-w-4xl mx-auto p-6 space-y-6">
       {/* Header */}
-      <div className="bg-white border-b sticky top-0 z-10 rounded-t-xl mb-6">
-        <div className="p-4">
-          <h1 className="text-2xl font-semibold mb-1">Good afternoon, Mr. Carter!</h1>
-          <p className="text-sm text-muted-foreground">Here's the latest update on your roof renovation (#RF-2024-001)</p>
+      <div className="bg-gradient-brand text-white border-none rounded-xl shadow-lg">
+        <div className="p-6 backdrop-blur-sm backdrop-brightness-110 rounded-xl">
+          <h1 className="text-3xl font-semibold mb-2">Good afternoon, Mr. Carter!</h1>
+          <p className="text-white/80">Here's the latest update on your roof renovation (#RF-2024-001)</p>
         </div>
       </div>
 
@@ -90,66 +90,59 @@ const ProjectStatus = () => {
 
       {/* Notification */}
       {showNotification && (
-        <Alert className="mb-6">
-          <AlertDescription>
+        <Alert className="border-primary/20 bg-primary/5">
+          <AlertDescription className="text-primary">
             Materials delivery scheduled for March 20th. Please ensure driveway access.
           </AlertDescription>
         </Alert>
       )}
 
       {/* Current Stage */}
-      <Card className="mb-6">
+      <Card className="border-none shadow-lg bg-gradient-to-br from-white to-accent/30">
         <CardHeader className="pb-2">
-          <CardTitle className="text-sm text-muted-foreground">Current Stage</CardTitle>
+          <CardTitle className="text-sm text-secondary">Current Stage</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="p-2 rounded-full bg-primary/10">
+            <div className="flex items-center space-x-4">
+              <div className="p-3 rounded-xl bg-primary/10">
                 {(() => {
                   const CurrentIcon = getCurrentStage().icon;
-                  return <CurrentIcon className="w-5 h-5 text-primary" />;
+                  return <CurrentIcon className="w-6 h-6 text-primary" />;
                 })()}
               </div>
               <div>
-                <h2 className="font-medium">{getCurrentStage().title}</h2>
+                <h2 className="text-lg font-medium">{getCurrentStage().title}</h2>
                 <p className="text-sm text-muted-foreground">{getCurrentStage().details}</p>
               </div>
             </div>
           </div>
-          <div className="mt-4">
-            <div className="flex justify-between text-sm mb-1">
+          <div className="mt-6">
+            <div className="flex justify-between text-sm mb-2">
               <span className="text-muted-foreground">Overall Progress</span>
-              <span className="font-medium">{Math.round(getProgressPercentage())}%</span>
+              <span className="font-medium text-primary">{Math.round(getProgressPercentage())}%</span>
             </div>
-            <Progress value={getProgressPercentage()} className="h-2" />
+            <Progress value={getProgressPercentage()} className="h-2 bg-accent" />
           </div>
         </CardContent>
       </Card>
 
       {/* Quick Actions */}
-      <div className="grid grid-cols-3 gap-4 mb-6">
-        <button 
-          onClick={() => setMessageDialogOpen(true)}
-          className="flex flex-col items-center p-4 bg-white rounded-xl border hover:border-primary/20 transition-colors"
-        >
-          <MessageCircle className="w-6 h-6 text-primary mb-1" />
-          <span className="text-xs">Message</span>
-        </button>
-        <button 
-          onClick={() => setDocumentViewerOpen(true)}
-          className="flex flex-col items-center p-4 bg-white rounded-xl border hover:border-primary/20 transition-colors"
-        >
-          <FileText className="w-6 h-6 text-primary mb-1" />
-          <span className="text-xs">Documents</span>
-        </button>
-        <button 
-          onClick={() => setScheduleDialogOpen(true)}
-          className="flex flex-col items-center p-4 bg-white rounded-xl border hover:border-primary/20 transition-colors"
-        >
-          <Clock className="w-6 h-6 text-primary mb-1" />
-          <span className="text-xs">Schedule</span>
-        </button>
+      <div className="grid grid-cols-3 gap-4">
+        {[
+          { icon: MessageCircle, label: "Message", action: () => setMessageDialogOpen(true) },
+          { icon: FileText, label: "Documents", action: () => setDocumentViewerOpen(true) },
+          { icon: Clock, label: "Schedule", action: () => setScheduleDialogOpen(true) }
+        ].map((action, index) => (
+          <button
+            key={index}
+            onClick={action.action}
+            className="flex flex-col items-center p-6 bg-white rounded-xl border border-accent hover:border-primary/20 hover:bg-accent/5 transition-all shadow-sm hover:shadow-md"
+          >
+            <action.icon className="w-6 h-6 text-primary mb-2" />
+            <span className="text-sm font-medium text-secondary">{action.label}</span>
+          </button>
+        ))}
       </div>
 
       {/* Timeline with Accordion */}
@@ -160,32 +153,36 @@ const ProjectStatus = () => {
             <Accordion type="single" collapsible key={stage.id}>
               <AccordionItem value={`stage-${stage.id}`} className="border-0">
                 <div 
-                  className={`bg-white p-4 rounded-xl border ${
-                    stage.status === "in-progress" ? "border-primary/20" : "border-accent"
+                  className={`bg-white p-6 rounded-xl border shadow-sm transition-all hover:shadow-md ${
+                    stage.status === "in-progress" ? "border-primary/20 bg-primary/5" : "border-accent"
                   }`}
                 >
-                  <div className="flex items-start space-x-3">
-                    <div className={`p-2 rounded-full ${getStatusColor(stage.status)}`}>
-                      <Icon className="w-5 h-5" />
+                  <div className="flex items-start space-x-4">
+                    <div className={`p-3 rounded-xl ${
+                      stage.status === "completed" ? "bg-success/10 text-success" :
+                      stage.status === "in-progress" ? "bg-primary/10 text-primary" :
+                      "bg-muted text-muted-foreground"
+                    }`}>
+                      <Icon className="w-6 h-6" />
                     </div>
                     <div className="flex-1">
                       <AccordionTrigger className="hover:no-underline pt-0">
                         <div className="flex items-start justify-between">
                           <div>
-                            <h3 className="font-medium">{stage.title}</h3>
+                            <h3 className="font-medium text-lg">{stage.title}</h3>
                             <p className="text-sm text-muted-foreground mt-1">{stage.date}</p>
                           </div>
                         </div>
                       </AccordionTrigger>
                       <AccordionContent>
-                        <p className="text-sm text-muted-foreground mt-2">
+                        <p className="text-sm text-muted-foreground mt-4 leading-relaxed">
                           {stage.summary}
                         </p>
                       </AccordionContent>
                     </div>
                   </div>
                   {stage.notification && (
-                    <div className="mt-2 text-sm text-primary bg-primary/10 p-2 rounded-lg">
+                    <div className="mt-4 text-sm text-primary bg-primary/10 p-3 rounded-lg">
                       {stage.notification}
                     </div>
                   )}
