@@ -77,23 +77,32 @@ const ProjectStatus = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-6 space-y-6">
+    <div className="w-full max-w-4xl mx-auto p-4 md:p-6 space-y-6">
       {/* Header */}
-      <div className="flex justify-between items-start">
-        <div className="bg-gradient-to-br from-[#1A1F2C] via-[#403E43] to-[#222222] p-4 rounded-lg">
-          <h1 className="text-3xl font-semibold mb-2 text-white">Good afternoon, Mr. Carter!</h1>
-          <p className="text-white/80">Here's the latest update on your roof renovation (#RF-2024-001)</p>
+      <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
+        <div className="bg-gradient-to-br from-[#1A1F2C] via-[#2C2E3E] to-[#1A1F2C] p-6 rounded-2xl shadow-lg w-full md:w-auto">
+          <h1 className="text-2xl md:text-3xl font-bold mb-2 text-white">Good afternoon, Mr. Carter!</h1>
+          <p className="text-white/80 text-sm md:text-base">Here's the latest update on your roof renovation (#RF-2024-001)</p>
         </div>
-        <WeatherWidget />
+        <div className="w-full md:w-auto">
+          <WeatherWidget />
+        </div>
       </div>
 
       {/* Team Section */}
-      <TeamSection />
+      <Card className="border-none shadow-lg bg-white overflow-hidden">
+        <CardHeader className="pb-2">
+          <CardTitle className="text-lg font-semibold text-secondary">Your Team</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <TeamSection />
+        </CardContent>
+      </Card>
 
       {/* Notification */}
       {showNotification && (
-        <Alert className="border-primary/20 bg-primary/5">
-          <AlertDescription className="text-primary">
+        <Alert className="border-primary/20 bg-primary/5 shadow-sm">
+          <AlertDescription className="text-primary font-medium">
             Materials delivery scheduled for March 20th. Please ensure driveway access.
           </AlertDescription>
         </Alert>
@@ -105,7 +114,7 @@ const ProjectStatus = () => {
           <CardTitle className="text-sm text-secondary">Current Stage</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex items-center space-x-4">
               <div className="p-3 rounded-xl bg-primary/10">
                 {(() => {
@@ -130,7 +139,7 @@ const ProjectStatus = () => {
       </Card>
 
       {/* Quick Actions */}
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {[
           { icon: MessageCircle, label: "Message", action: () => setMessageDialogOpen(true) },
           { icon: FileText, label: "Documents", action: () => setDocumentViewerOpen(true) },
@@ -139,15 +148,15 @@ const ProjectStatus = () => {
           <button
             key={index}
             onClick={action.action}
-            className="flex flex-col items-center p-6 bg-white rounded-xl border border-accent hover:border-primary/20 hover:bg-accent/5 transition-all shadow-sm hover:shadow-md"
+            className="flex items-center justify-center p-6 bg-white rounded-xl border border-accent hover:border-primary/20 hover:bg-accent/5 transition-all shadow-sm hover:shadow-md space-x-3"
           >
-            <action.icon className="w-6 h-6 text-primary mb-2" />
+            <action.icon className="w-5 h-5 text-primary" />
             <span className="text-sm font-medium text-secondary">{action.label}</span>
           </button>
         ))}
       </div>
 
-      {/* Timeline with Accordion */}
+      {/* Timeline */}
       <div className="space-y-4">
         {projectStages.map((stage) => {
           const Icon = stage.icon;
@@ -165,14 +174,14 @@ const ProjectStatus = () => {
                       stage.status === "in-progress" ? "bg-primary/10 text-primary" :
                       "bg-muted text-muted-foreground"
                     }`}>
-                      <Icon className="w-6 h-6" />
+                      <Icon className="w-5 h-5" />
                     </div>
-                    <div className="flex-1">
+                    <div className="flex-1 min-w-0">
                       <AccordionTrigger className="hover:no-underline pt-0">
-                        <div className="flex items-start justify-between">
+                        <div className="flex items-start justify-between w-full">
                           <div>
-                            <h3 className="font-medium text-lg">{stage.title}</h3>
-                            <p className="text-sm text-muted-foreground mt-1">{stage.date}</p>
+                            <h3 className="font-medium text-base md:text-lg truncate">{stage.title}</h3>
+                            <p className="text-xs md:text-sm text-muted-foreground mt-1">{stage.date}</p>
                           </div>
                         </div>
                       </AccordionTrigger>
