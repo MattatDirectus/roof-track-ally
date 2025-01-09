@@ -78,7 +78,7 @@ const ProjectStatus = () => {
   return (
     <div className="w-full max-w-4xl mx-auto p-4 md:p-6 space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-br from-[#1A1F2C] via-[#2C2E3E] to-[#1A1F2C] p-6 rounded-2xl shadow-lg w-full">
+      <div className="bg-gradient-brand p-6 rounded-2xl shadow-lg w-full">
         <div className="flex items-center gap-4 mb-4">
           <img 
             src="/lovable-uploads/91dd03e7-13cd-4439-9e3f-44e946944710.png" 
@@ -93,7 +93,7 @@ const ProjectStatus = () => {
       {/* Team Section */}
       <Card className="border-none shadow-lg bg-white overflow-hidden">
         <CardHeader className="pb-2">
-          <CardTitle className="text-lg font-semibold text-secondary">Your Team</CardTitle>
+          <CardTitle className="text-lg font-semibold text-primary">Your Team</CardTitle>
         </CardHeader>
         <CardContent>
           <TeamSection />
@@ -111,7 +111,7 @@ const ProjectStatus = () => {
       {/* Current Stage */}
       <Card className="border-none shadow-lg bg-gradient-to-br from-white to-accent/30">
         <CardHeader className="pb-2">
-          <CardTitle className="text-sm text-secondary">Current Stage</CardTitle>
+          <CardTitle className="text-sm text-primary">Current Stage</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -151,7 +151,7 @@ const ProjectStatus = () => {
             className="flex items-center justify-center p-6 bg-white rounded-xl border border-accent hover:border-primary/20 hover:bg-accent/5 transition-all shadow-sm hover:shadow-md space-x-3"
           >
             <action.icon className="w-5 h-5 text-primary" />
-            <span className="text-sm font-medium text-secondary">{action.label}</span>
+            <span className="text-sm font-medium text-primary">{action.label}</span>
           </button>
         ))}
       </div>
