@@ -94,8 +94,8 @@ const ProjectStatus = () => {
       </Card>
 
       {showNotification && (
-        <Alert className="border-primary/20 bg-primary/5">
-          <AlertDescription className="text-primary font-medium">
+        <Alert className="border-[#ffedeb] bg-[#fff4f2]">
+          <AlertDescription className="text-[#d92d20] font-medium">
             Materials delivery scheduled for March 20th. Please ensure driveway access.
           </AlertDescription>
         </Alert>

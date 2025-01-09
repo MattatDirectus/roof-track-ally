@@ -24,7 +24,7 @@ const teamMembers: TeamMember[] = [
     id: 1,
     name: "John Carter",
     role: "Account Manager",
-    image: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952",
+    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
     email: "john.carter@example.com",
     phone: "(555) 123-4567",
     bio: "15+ years experience in project management, ensuring your roof replacement project runs smoothly from start to finish."
@@ -42,7 +42,7 @@ const teamMembers: TeamMember[] = [
     id: 3,
     name: "Mike Rodriguez",
     role: "Lead Installer",
-    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e",
+    image: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952",
     email: "mike.rodriguez@example.com",
     phone: "(555) 345-6789",
     bio: "Master craftsman with 20+ years of roofing experience, certified in all major roofing systems."
@@ -59,7 +59,7 @@ const TeamMemberCard = ({ member }: { member: TeamMember }) => {
             <AvatarFallback>{member.name[0]}</AvatarFallback>
           </Avatar>
           <div className="text-left">
-            <p className="text-sm font-medium group-hover:text-primary">{member.name}</p>
+            <p className="text-sm font-medium text-white">{member.name}</p>
             <p className="text-xs text-muted-foreground">{member.role}</p>
           </div>
         </div>
