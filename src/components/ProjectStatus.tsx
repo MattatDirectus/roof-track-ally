@@ -5,11 +5,13 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useState } from "react";
 import MessageDialog from "./MessageDialog";
 import { DocumentViewer } from "./DocumentViewer";
+import ScheduleDialog from "./ScheduleDialog";
 
 const ProjectStatus = () => {
   const [showNotification, setShowNotification] = useState(true);
   const [messageDialogOpen, setMessageDialogOpen] = useState(false);
   const [documentViewerOpen, setDocumentViewerOpen] = useState(false);
+  const [scheduleDialogOpen, setScheduleDialogOpen] = useState(false);
 
   const projectStages = [
     { 
@@ -132,7 +134,10 @@ const ProjectStatus = () => {
           <FileText className="w-6 h-6 text-primary mb-1" />
           <span className="text-xs">Documents</span>
         </button>
-        <button className="flex flex-col items-center p-4 bg-white rounded-xl border hover:border-primary/20 transition-colors">
+        <button 
+          onClick={() => setScheduleDialogOpen(true)}
+          className="flex flex-col items-center p-4 bg-white rounded-xl border hover:border-primary/20 transition-colors"
+        >
           <Clock className="w-6 h-6 text-primary mb-1" />
           <span className="text-xs">Schedule</span>
         </button>
@@ -180,6 +185,12 @@ const ProjectStatus = () => {
       <DocumentViewer
         open={documentViewerOpen}
         onOpenChange={setDocumentViewerOpen}
+      />
+
+      <ScheduleDialog
+        open={scheduleDialogOpen}
+        onOpenChange={setScheduleDialogOpen}
+        projectStages={projectStages}
       />
     </div>
   );
