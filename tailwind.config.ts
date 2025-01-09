@@ -25,11 +25,11 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#932793",
+          DEFAULT: "#33C3F0",
           foreground: "#ffffff",
         },
         secondary: {
-          DEFAULT: "#EAACE8",
+          DEFAULT: "#FFDEE2",
           foreground: "#1A1F2C",
         },
         success: {
@@ -41,11 +41,11 @@ export default {
           foreground: "hsl(var(--destructive-foreground))",
         },
         muted: {
-          DEFAULT: "#F6DBF5",
+          DEFAULT: "#D3E4FD",
           foreground: "#403E43",
         },
         accent: {
-          DEFAULT: "#F6DBF5",
+          DEFAULT: "#D3E4FD",
           foreground: "#1A1F2C",
         },
       },
@@ -62,7 +62,7 @@ export default {
         "progress-advance": "progress-advance 1s ease-out forwards",
       },
       backgroundImage: {
-        'gradient-brand': 'linear-gradient(102.3deg, rgba(147,39,143,1) 5.9%, rgba(234,172,232,1) 64%, rgba(246,219,245,1) 89%)',
+        'gradient-brand': 'linear-gradient(102.3deg, rgba(51,195,240,1) 5.9%, rgba(211,228,253,1) 64%, rgba(255,222,226,1) 89%)',
       },
     },
   },
