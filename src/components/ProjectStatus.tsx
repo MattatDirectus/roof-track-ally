@@ -7,6 +7,7 @@ import MessageDialog from "./MessageDialog";
 import { DocumentViewer } from "./DocumentViewer";
 import ScheduleDialog from "./ScheduleDialog";
 import TeamSection from "./TeamSection";
+import WeatherWidget from "./WeatherWidget";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const ProjectStatus = () => {
@@ -78,11 +79,12 @@ const ProjectStatus = () => {
   return (
     <div className="w-full max-w-4xl mx-auto p-6 space-y-6">
       {/* Header */}
-      <div className="bg-gradient-brand text-white border-none rounded-xl shadow-lg">
-        <div className="p-6 backdrop-blur-sm backdrop-brightness-110 rounded-xl">
+      <div className="flex justify-between items-start">
+        <div>
           <h1 className="text-3xl font-semibold mb-2">Good afternoon, Mr. Carter!</h1>
-          <p className="text-white/80">Here's the latest update on your roof renovation (#RF-2024-001)</p>
+          <p className="text-muted-foreground">Here's the latest update on your roof renovation (#RF-2024-001)</p>
         </div>
+        <WeatherWidget />
       </div>
 
       {/* Team Section */}
