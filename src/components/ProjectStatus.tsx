@@ -7,7 +7,6 @@ import MessageDialog from "./MessageDialog";
 import { DocumentViewer } from "./DocumentViewer";
 import ScheduleDialog from "./ScheduleDialog";
 import TeamSection from "./TeamSection";
-import WeatherWidget from "./WeatherWidget";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const ProjectStatus = () => {
@@ -79,14 +78,9 @@ const ProjectStatus = () => {
   return (
     <div className="w-full max-w-4xl mx-auto p-4 md:p-6 space-y-6">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
-        <div className="bg-gradient-to-br from-[#1A1F2C] via-[#2C2E3E] to-[#1A1F2C] p-6 rounded-2xl shadow-lg w-full md:w-auto">
-          <h1 className="text-2xl md:text-3xl font-bold mb-2 text-white">Good afternoon, Mr. Carter!</h1>
-          <p className="text-white/80 text-sm md:text-base">Here's the latest update on your roof renovation (#RF-2024-001)</p>
-        </div>
-        <div className="w-full md:w-auto">
-          <WeatherWidget />
-        </div>
+      <div className="bg-gradient-to-br from-[#1A1F2C] via-[#2C2E3E] to-[#1A1F2C] p-6 rounded-2xl shadow-lg w-full">
+        <h1 className="text-2xl md:text-3xl font-bold mb-2 text-white">Good afternoon, Mr. Carter!</h1>
+        <p className="text-white/80 text-sm md:text-base">Here's the latest update on your roof renovation (#RF-2024-001)</p>
       </div>
 
       {/* Team Section */}
@@ -99,7 +93,6 @@ const ProjectStatus = () => {
         </CardContent>
       </Card>
 
-      {/* Notification */}
       {showNotification && (
         <Alert className="border-primary/20 bg-primary/5 shadow-sm">
           <AlertDescription className="text-primary font-medium">
