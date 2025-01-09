@@ -76,15 +76,15 @@ const ProjectStatus = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-4 md:p-6 space-y-6">
+    <div className="w-full max-w-4xl mx-auto p-4 md:p-6 space-y-6 bg-background min-h-screen">
       {/* Header */}
-      <div className="bg-gradient-to-br from-[#1A1F2C] to-[#2A2F3C] p-6 rounded-2xl shadow-lg w-full">
+      <div className="bg-gradient-dark p-6 rounded-2xl shadow-lg w-full">
         <h1 className="text-2xl md:text-3xl font-bold text-white">Good afternoon, Mr. Carter!</h1>
         <p className="text-white/80 text-sm md:text-base mt-2">Here's the latest update on your roof renovation (#RF-2024-001)</p>
       </div>
 
       {/* Team Section */}
-      <Card className="border-none shadow-lg bg-white overflow-hidden">
+      <Card className="border-none shadow-lg bg-secondary">
         <CardHeader className="pb-2">
           <CardTitle className="text-lg font-semibold text-primary">Your Team</CardTitle>
         </CardHeader>
@@ -94,7 +94,7 @@ const ProjectStatus = () => {
       </Card>
 
       {showNotification && (
-        <Alert className="border-primary/20 bg-primary/5 shadow-sm">
+        <Alert className="border-primary/20 bg-primary/5">
           <AlertDescription className="text-primary font-medium">
             Materials delivery scheduled for March 20th. Please ensure driveway access.
           </AlertDescription>
@@ -102,7 +102,7 @@ const ProjectStatus = () => {
       )}
 
       {/* Current Stage */}
-      <Card className="border-none shadow-lg bg-gradient-to-br from-white to-accent/30">
+      <Card className="border-none shadow-lg bg-secondary">
         <CardHeader className="pb-2">
           <CardTitle className="text-sm text-primary">Current Stage</CardTitle>
         </CardHeader>
@@ -116,7 +116,7 @@ const ProjectStatus = () => {
                 })()}
               </div>
               <div>
-                <h2 className="text-lg font-medium">{getCurrentStage().title}</h2>
+                <h2 className="text-lg font-medium text-foreground">{getCurrentStage().title}</h2>
                 <p className="text-sm text-muted-foreground">{getCurrentStage().details}</p>
               </div>
             </div>
@@ -126,7 +126,7 @@ const ProjectStatus = () => {
               <span className="text-muted-foreground">Overall Progress</span>
               <span className="font-medium text-primary">{Math.round(getProgressPercentage())}%</span>
             </div>
-            <Progress value={getProgressPercentage()} className="h-2 bg-accent" />
+            <Progress value={getProgressPercentage()} className="h-2 bg-muted" />
           </div>
         </CardContent>
       </Card>
@@ -141,7 +141,7 @@ const ProjectStatus = () => {
           <button
             key={index}
             onClick={action.action}
-            className="flex items-center justify-center p-6 bg-white rounded-xl border border-accent hover:border-primary/20 hover:bg-accent/5 transition-all shadow-sm hover:shadow-md space-x-3"
+            className="flex items-center justify-center p-6 bg-secondary rounded-xl border border-accent hover:border-primary/20 hover:bg-accent/5 transition-all shadow-sm hover:shadow-md space-x-3"
           >
             <action.icon className="w-5 h-5 text-primary" />
             <span className="text-sm font-medium text-primary">{action.label}</span>
@@ -157,7 +157,7 @@ const ProjectStatus = () => {
             <Accordion type="single" collapsible key={stage.id}>
               <AccordionItem value={`stage-${stage.id}`} className="border-0">
                 <div 
-                  className={`bg-white p-6 rounded-xl border shadow-sm transition-all hover:shadow-md ${
+                  className={`bg-secondary p-6 rounded-xl border shadow-sm transition-all hover:shadow-md ${
                     stage.status === "in-progress" ? "border-primary/20 bg-primary/5" : "border-accent"
                   }`}
                 >
@@ -173,7 +173,7 @@ const ProjectStatus = () => {
                       <AccordionTrigger className="hover:no-underline pt-0">
                         <div className="flex items-start justify-between w-full">
                           <div>
-                            <h3 className="font-medium text-base md:text-lg truncate">{stage.title}</h3>
+                            <h3 className="font-medium text-base md:text-lg truncate text-foreground">{stage.title}</h3>
                             <p className="text-xs md:text-sm text-muted-foreground mt-1">{stage.date}</p>
                           </div>
                         </div>

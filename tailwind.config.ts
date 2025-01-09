@@ -22,15 +22,15 @@ export default {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        background: "#1A1F2C",
+        foreground: "#ffffff",
         primary: {
           DEFAULT: "#33C3F0",
           foreground: "#ffffff",
         },
         secondary: {
-          DEFAULT: "#FFDEE2",
-          foreground: "#1A1F2C",
+          DEFAULT: "#2A2F3C",
+          foreground: "#ffffff",
         },
         success: {
           DEFAULT: "#10B981",
@@ -41,12 +41,12 @@ export default {
           foreground: "hsl(var(--destructive-foreground))",
         },
         muted: {
-          DEFAULT: "#D3E4FD",
-          foreground: "#403E43",
+          DEFAULT: "#374151",
+          foreground: "#D1D5DB",
         },
         accent: {
-          DEFAULT: "#D3E4FD",
-          foreground: "#1A1F2C",
+          DEFAULT: "#2A2F3C",
+          foreground: "#ffffff",
         },
       },
       fontFamily: {
@@ -62,7 +62,7 @@ export default {
         "progress-advance": "progress-advance 1s ease-out forwards",
       },
       backgroundImage: {
-        'gradient-brand': 'linear-gradient(102.3deg, rgba(51,195,240,1) 5.9%, rgba(211,228,253,1) 64%, rgba(255,222,226,1) 89%)',
+        'gradient-dark': 'linear-gradient(to bottom right, #1A1F2C, #2A2F3C)',
       },
     },
   },
