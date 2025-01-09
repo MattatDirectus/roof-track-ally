@@ -79,7 +79,14 @@ const ProjectStatus = () => {
     <div className="w-full max-w-4xl mx-auto p-4 md:p-6 space-y-6">
       {/* Header */}
       <div className="bg-gradient-to-br from-[#1A1F2C] via-[#2C2E3E] to-[#1A1F2C] p-6 rounded-2xl shadow-lg w-full">
-        <h1 className="text-2xl md:text-3xl font-bold mb-2 text-white">Good afternoon, Mr. Carter!</h1>
+        <div className="flex items-center gap-4 mb-4">
+          <img 
+            src="/lovable-uploads/91dd03e7-13cd-4439-9e3f-44e946944710.png" 
+            alt="Ally Logo" 
+            className="w-12 h-12"
+          />
+          <h1 className="text-2xl md:text-3xl font-bold text-white">Good afternoon, Mr. Carter!</h1>
+        </div>
         <p className="text-white/80 text-sm md:text-base">Here's the latest update on your roof renovation (#RF-2024-001)</p>
       </div>
 
