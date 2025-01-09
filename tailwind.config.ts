@@ -48,9 +48,13 @@ export default {
           DEFAULT: "#2A2F3C",
           foreground: "#ffffff",
         },
+        card: {
+          DEFAULT: "#1A1F2C",
+          foreground: "#ffffff",
+        }
       },
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
+        sans: ["Roboto", "sans-serif"],
       },
       keyframes: {
         "progress-advance": {
@@ -62,7 +66,7 @@ export default {
         "progress-advance": "progress-advance 1s ease-out forwards",
       },
       backgroundImage: {
-        'gradient-dark': 'linear-gradient(to bottom right, #2A2F3C, #374151)',
+        'gradient-dark': 'linear-gradient(to bottom right, #1A1F2C, #2A2F3C)',
       },
     },
   },

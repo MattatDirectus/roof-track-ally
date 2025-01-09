@@ -104,7 +104,7 @@ const ProjectStatus = () => {
       {/* Current Stage */}
       <Card className="border-none shadow-lg bg-secondary">
         <CardHeader className="pb-2">
-          <CardTitle className="text-sm text-primary">Current Stage</CardTitle>
+          <CardTitle className="text-lg font-semibold text-primary">Current Stage</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
