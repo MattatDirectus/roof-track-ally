@@ -75,8 +75,8 @@ const ProjectStatus = () => {
       {/* Header */}
       <div className="bg-white border-b sticky top-0 z-10 rounded-t-xl mb-6">
         <div className="p-4">
-          <h1 className="text-lg font-semibold">Roof Replacement Project</h1>
-          <p className="text-sm text-muted-foreground">Project #RF-2024-001</p>
+          <h1 className="text-2xl font-semibold mb-1">Good afternoon, Mr. Carter!</h1>
+          <p className="text-sm text-muted-foreground">Here's the latest update on your roof renovation (#RF-2024-001)</p>
         </div>
       </div>
 
