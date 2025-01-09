@@ -3,10 +3,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useState } from "react";
+import MessageDialog from "./MessageDialog";
 
 const ProjectStatus = () => {
   const [showNotification, setShowNotification] = useState(true);
-  const [activeTab, setActiveTab] = useState("timeline");
+  const [messageDialogOpen, setMessageDialogOpen] = useState(false);
 
   const projectStages = [
     { 
@@ -94,7 +95,7 @@ const ProjectStatus = () => {
               <div className="p-2 rounded-full bg-primary/10">
                 {(() => {
                   const CurrentIcon = getCurrentStage().icon;
-                  return CurrentIcon ? <CurrentIcon className="w-5 h-5 text-primary" /> : null;
+                  return <CurrentIcon className="w-5 h-5 text-primary" />;
                 })()}
               </div>
               <div>
@@ -115,7 +116,10 @@ const ProjectStatus = () => {
 
       {/* Quick Actions */}
       <div className="grid grid-cols-3 gap-4 mb-6">
-        <button className="flex flex-col items-center p-4 bg-white rounded-xl border hover:border-primary/20 transition-colors">
+        <button 
+          onClick={() => setMessageDialogOpen(true)}
+          className="flex flex-col items-center p-4 bg-white rounded-xl border hover:border-primary/20 transition-colors"
+        >
           <MessageCircle className="w-6 h-6 text-primary mb-1" />
           <span className="text-xs">Message</span>
         </button>
@@ -162,6 +166,11 @@ const ProjectStatus = () => {
           );
         })}
       </div>
+
+      <MessageDialog 
+        open={messageDialogOpen} 
+        onOpenChange={setMessageDialogOpen} 
+      />
     </div>
   );
 };
