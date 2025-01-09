@@ -92,9 +92,9 @@ const ProjectStatus = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <div className="p-2 rounded-full bg-primary/10">
-                {getCurrentStage().icon && 
+                {getCurrentStage().icon && (
                   <getCurrentStage().icon className="w-5 h-5 text-primary" />
-                }
+                )}
               </div>
               <div>
                 <h2 className="font-medium">{getCurrentStage().title}</h2>
