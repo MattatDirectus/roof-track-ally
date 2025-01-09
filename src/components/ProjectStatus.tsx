@@ -7,6 +7,7 @@ import MessageDialog from "./MessageDialog";
 import { DocumentViewer } from "./DocumentViewer";
 import ScheduleDialog from "./ScheduleDialog";
 import TeamSection from "./TeamSection";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const ProjectStatus = () => {
   const [showNotification, setShowNotification] = useState(true);
@@ -21,7 +22,8 @@ const ProjectStatus = () => {
       icon: Calendar, 
       date: "Mar 15, 2024", 
       details: "Virtual consultation completed",
-      status: "completed" 
+      status: "completed",
+      summary: "During our virtual consultation, we discussed your roofing needs and concerns. We assessed the current condition of your 20-year-old asphalt shingle roof and identified signs of wear, particularly around the chimney flashing. You expressed interest in upgrading to GAF Timberline HDZ architectural shingles in Charcoal. We also reviewed warranty options and discussed the timeline for completion."
     },
     { 
       id: 2, 
@@ -30,7 +32,8 @@ const ProjectStatus = () => {
       date: "Mar 20, 2024", 
       details: "GAF Timberline HDZ Shingles",
       status: "in-progress",
-      notification: "Materials arriving in 3 days"
+      notification: "Materials arriving in 3 days",
+      summary: "We've placed the order for your roofing materials with our trusted supplier. The package includes GAF Timberline HDZ architectural shingles in Charcoal, synthetic underlayment, ice and water shield for vulnerable areas, and new flashing components. All materials are scheduled for delivery to your property on March 20th."
     },
     { 
       id: 3, 
@@ -38,7 +41,8 @@ const ProjectStatus = () => {
       icon: Clock, 
       date: "Apr 5, 2024", 
       details: "Weather permitting",
-      status: "pending" 
+      status: "pending",
+      summary: "Installation is scheduled to begin on April 5th, with an estimated completion time of 2-3 days, weather permitting. Our team will arrive at 7:30 AM to set up safety equipment and begin the tear-off process. We've coordinated with local weather services to ensure optimal conditions for your installation."
     },
     { 
       id: 4, 
@@ -46,7 +50,8 @@ const ProjectStatus = () => {
       icon: CheckCircle2, 
       date: "Apr 8, 2024", 
       details: "Final inspection and cleanup",
-      status: "pending" 
+      status: "pending",
+      summary: "Upon completion, our team will conduct a thorough final inspection, ensure complete site cleanup, and walk you through the finished project. We'll provide documentation of the installation, warranty information, and maintenance guidelines. A follow-up inspection will be scheduled after the first significant rainfall."
     }
   ];
 
@@ -147,26 +152,36 @@ const ProjectStatus = () => {
         </button>
       </div>
 
-      {/* Timeline */}
+      {/* Timeline with Accordion */}
       <div className="space-y-4">
         {projectStages.map((stage) => {
           const Icon = stage.icon;
           return (
-            <div 
-              key={stage.id}
-              className={`bg-white p-4 rounded-xl border ${
-                stage.status === "in-progress" ? "border-primary/20" : "border-accent"
-              }`}
-            >
-              <div className="flex items-start space-x-3">
-                <div className={`p-2 rounded-full ${getStatusColor(stage.status)}`}>
-                  <Icon className="w-5 h-5" />
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <h3 className="font-medium">{stage.title}</h3>
-                      <p className="text-sm text-muted-foreground mt-1">{stage.date}</p>
+            <Accordion type="single" collapsible key={stage.id}>
+              <AccordionItem value={`stage-${stage.id}`} className="border-0">
+                <div 
+                  className={`bg-white p-4 rounded-xl border ${
+                    stage.status === "in-progress" ? "border-primary/20" : "border-accent"
+                  }`}
+                >
+                  <div className="flex items-start space-x-3">
+                    <div className={`p-2 rounded-full ${getStatusColor(stage.status)}`}>
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <div className="flex-1">
+                      <AccordionTrigger className="hover:no-underline pt-0">
+                        <div className="flex items-start justify-between">
+                          <div>
+                            <h3 className="font-medium">{stage.title}</h3>
+                            <p className="text-sm text-muted-foreground mt-1">{stage.date}</p>
+                          </div>
+                        </div>
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <p className="text-sm text-muted-foreground mt-2">
+                          {stage.summary}
+                        </p>
+                      </AccordionContent>
                     </div>
                   </div>
                   {stage.notification && (
@@ -175,8 +190,8 @@ const ProjectStatus = () => {
                     </div>
                   )}
                 </div>
-              </div>
-            </div>
+              </AccordionItem>
+            </Accordion>
           );
         })}
       </div>
