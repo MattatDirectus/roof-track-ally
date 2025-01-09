@@ -22,8 +22,8 @@ export default {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "#1A1F2C",
-        foreground: "#ffffff",
+        background: "#ffffff",
+        foreground: "#1A1F2C",
         primary: {
           DEFAULT: "#33C3F0",
           foreground: "#ffffff",
@@ -62,7 +62,7 @@ export default {
         "progress-advance": "progress-advance 1s ease-out forwards",
       },
       backgroundImage: {
-        'gradient-dark': 'linear-gradient(to bottom right, #1A1F2C, #2A2F3C)',
+        'gradient-dark': 'linear-gradient(to bottom right, #2A2F3C, #374151)',
       },
     },
   },
