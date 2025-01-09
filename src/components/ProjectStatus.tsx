@@ -88,7 +88,7 @@ const ProjectStatus = () => {
         <CardHeader className="pb-2">
           <CardTitle className="text-lg font-semibold text-primary">Your Team</CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="pt-0">
           <TeamSection />
         </CardContent>
       </Card>

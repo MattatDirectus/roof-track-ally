@@ -53,12 +53,12 @@ const TeamMemberCard = ({ member }: { member: TeamMember }) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <div className="flex flex-col items-center cursor-pointer group">
-          <Avatar className="h-16 w-16 mb-2">
+        <div className="flex items-center space-x-3 p-2 cursor-pointer hover:bg-secondary/5 rounded-lg transition-colors">
+          <Avatar className="h-12 w-12">
             <AvatarImage src={member.image} alt={member.name} />
             <AvatarFallback>{member.name[0]}</AvatarFallback>
           </Avatar>
-          <div className="text-center">
+          <div className="text-left">
             <p className="text-sm font-medium group-hover:text-primary">{member.name}</p>
             <p className="text-xs text-muted-foreground">{member.role}</p>
           </div>
@@ -100,9 +100,8 @@ const TeamMemberCard = ({ member }: { member: TeamMember }) => {
 
 const TeamSection = () => {
   return (
-    <div className="bg-white p-6 rounded-xl border mb-6">
-      <h2 className="text-lg font-semibold mb-4">Your Team</h2>
-      <div className="flex justify-around items-center">
+    <div className="bg-secondary p-6 rounded-xl">
+      <div className="space-y-4">
         {teamMembers.map((member) => (
           <TeamMemberCard key={member.id} member={member} />
         ))}
