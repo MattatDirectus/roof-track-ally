@@ -39,15 +39,15 @@ const MaterialsGallery = ({ materials }: MaterialsGalleryProps) => {
         </button>
       </div>
       
-      <div className="space-y-3">
+      <div className="space-y-2">
         <h3 className="font-medium text-primary">What's arriving:</h3>
         {materials.map((material, index) => (
           <div 
             key={index} 
             className={`p-3 rounded-lg ${
               currentImageIndex === index 
-                ? "bg-primary/20 border border-primary/30" 
-                : "bg-primary/5"
+                ? "bg-primary/10 border border-primary/20" 
+                : "bg-gray-100"
             }`}
           >
             <p className="font-medium text-primary">{material.name}</p>

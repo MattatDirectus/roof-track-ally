@@ -19,7 +19,7 @@ const ProjectStatus = () => {
       color: "Charcoal",
       quantity: "24 squares (72 bundles)",
       details: "High-definition shingles with LayerLock technology",
-      image: "/lovable-uploads/ab5ef92c-e89c-44ed-93da-63b87f5111ec.png"
+      image: "/lovable-uploads/f46167b1-f125-41a7-b5ea-ce46191291df.png"
     },
     {
       name: "Synthetic Underlayment",
@@ -80,7 +80,7 @@ const ProjectStatus = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-4 md:p-6 space-y-6 bg-background min-h-screen relative pb-16">
+    <div className="w-full max-w-4xl mx-auto space-y-6 bg-background min-h-screen pb-16">
       <div className="bg-gradient-subtle p-6 rounded-2xl shadow-lg w-full space-y-6">
         <div>
           <h1 className="text-2xl md:text-3xl font-bold text-foreground">Good afternoon, Mr. Carter!</h1>
