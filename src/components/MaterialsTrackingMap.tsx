@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { Card } from './ui/card';
-import { Package, Map } from 'lucide-react';
+import { Map } from 'lucide-react';
 import { Input } from './ui/input';
 
 const MaterialsTrackingMap = () => {
@@ -91,7 +91,7 @@ const MaterialsTrackingMap = () => {
           <div className="space-y-2">
             <p className="text-sm text-muted-foreground">
               Please enter your Mapbox public token to view the delivery tracking map.
-              You can find this in your Mapbox account dashboard.
+              You can find this in your Mapbox account dashboard at mapbox.com.
             </p>
             <Input
               type="text"
