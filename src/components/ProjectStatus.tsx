@@ -77,7 +77,6 @@ const ProjectStatus = () => {
 
   return (
     <div className="w-full max-w-4xl mx-auto p-4 md:p-6 space-y-6 bg-background min-h-screen relative pb-16">
-      {/* Combined Header and Current Stage */}
       <div className="bg-gradient-subtle p-6 rounded-2xl shadow-lg w-full space-y-6">
         <div>
           <h1 className="text-2xl md:text-3xl font-bold text-foreground">Good afternoon, Mr. Carter!</h1>
@@ -85,7 +84,6 @@ const ProjectStatus = () => {
         </div>
         
         <div className="space-y-4">
-          {/* Progress Steps */}
           <div className="flex justify-between items-center w-full relative">
             {projectStages.map((stage, index) => {
               const Icon = stage.icon;
@@ -97,7 +95,7 @@ const ProjectStatus = () => {
                 <div key={stage.id} className="flex flex-col items-center relative z-10 w-1/4">
                   <div 
                     className={`w-14 h-14 rounded-full flex items-center justify-center border-2 transition-colors ${
-                      isCompleted ? "bg-[#4CAF50] text-white border-[#4CAF50]" :
+                      isCompleted ? "bg-[#E7F6E7] text-[#4CAF50] border-[#4CAF50]" :
                       isInProgress ? "bg-primary text-primary-foreground border-primary" :
                       "bg-muted text-muted-foreground border-muted-foreground/30"
                     }`}
@@ -118,10 +116,9 @@ const ProjectStatus = () => {
               );
             })}
             
-            {/* Progress Line */}
             <div className="absolute top-7 left-0 w-full h-[3px] bg-muted -z-0">
               <div 
-                className="h-full bg-gradient-to-r from-[#4CAF50] to-[#45a049] animate-gradient-shift"
+                className="h-full bg-[#E7F6E7]"
                 style={{ 
                   width: `${getProgressPercentage()}%`,
                   transition: 'width 0.5s ease-out'
@@ -130,7 +127,6 @@ const ProjectStatus = () => {
             </div>
           </div>
 
-          {/* Current Stage Details */}
           <div className="bg-card/50 backdrop-blur-sm p-4 rounded-xl border border-accent mt-6">
             <div className="flex items-start space-x-4">
               <div className="p-3 rounded-xl bg-primary/10">
@@ -156,7 +152,6 @@ const ProjectStatus = () => {
         </div>
       </div>
 
-      {/* Team Section */}
       <Card className="border-none shadow-lg bg-secondary">
         <CardHeader className="pb-2">
           <CardTitle className="text-lg font-semibold text-primary">Your Team</CardTitle>
@@ -166,10 +161,8 @@ const ProjectStatus = () => {
         </CardContent>
       </Card>
 
-      {/* Materials Tracking Map */}
       <MaterialsTrackingMap />
 
-      {/* Timeline */}
       <div className="space-y-4">
         {projectStages.map((stage) => {
           const Icon = stage.icon;
@@ -220,7 +213,6 @@ const ProjectStatus = () => {
         })}
       </div>
 
-      {/* Footer */}
       <div className="fixed bottom-0 left-0 right-0 bg-white py-4 border-t border-gray-200 shadow-lg">
         <div className="max-w-4xl mx-auto px-4 flex items-center justify-center gap-2">
           <span className="text-sm text-muted-foreground">Powered by</span>

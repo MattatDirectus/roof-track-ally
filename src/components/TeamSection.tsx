@@ -124,17 +124,27 @@ const TeamSection = ({ projectStages }: { projectStages: any[] }) => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-accent">
         {[
-          { icon: MessageCircle, label: "Message", action: () => setMessageDialogOpen(true) },
+          { 
+            icon: MessageCircle, 
+            label: "Message", 
+            action: () => setMessageDialogOpen(true),
+            hasNotification: true 
+          },
           { icon: FileText, label: "Documents", action: () => setDocumentViewerOpen(true) },
           { icon: Clock, label: "Schedule", action: () => setScheduleDialogOpen(true) }
         ].map((action, index) => (
           <button
             key={index}
             onClick={action.action}
-            className="flex items-center justify-center p-6 bg-secondary rounded-xl border border-accent hover:border-primary/20 hover:bg-accent/5 transition-all shadow-lg hover:shadow-xl space-x-3"
+            className="flex items-center justify-center p-6 bg-secondary rounded-xl border border-accent hover:border-primary/20 hover:bg-accent/5 transition-all shadow-lg hover:shadow-xl space-x-3 relative"
           >
             <action.icon className="w-5 h-5 text-primary" />
             <span className="text-sm font-medium text-primary">{action.label}</span>
+            {action.hasNotification && (
+              <div className="absolute -top-2 -right-2 w-5 h-5 bg-destructive rounded-full flex items-center justify-center">
+                <span className="text-xs font-medium text-white">1</span>
+              </div>
+            )}
           </button>
         ))}
       </div>
