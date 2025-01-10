@@ -8,18 +8,18 @@
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
-    --card: 215 25% 27%;
-    --card-foreground: 0 0% 100%;
+    --card: 240 20% 97%;
+    --card-foreground: 222 14% 25%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
     --primary: 199 91% 57%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 217 19% 27%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 215 25% 27%;
-    --muted-foreground: 215.4 16.3% 90%;
-    --accent: 217 19% 27%;
-    --accent-foreground: 0 0% 100%;
+    --secondary: 240 20% 97%;
+    --secondary-foreground: 222 14% 25%;
+    --muted: 252 100% 95%;
+    --muted-foreground: 222 14% 25%;
+    --accent: 217 93% 91%;
+    --accent-foreground: 222 14% 25%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
@@ -37,6 +37,6 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply text-card-foreground font-medium;
+    @apply text-foreground font-medium;
   }
 }
