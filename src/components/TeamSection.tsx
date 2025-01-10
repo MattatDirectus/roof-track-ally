@@ -1,4 +1,4 @@
-import { UserRound, Mail, Phone } from "lucide-react";
+import { UserRound, Mail, Phone, Info } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -53,14 +53,17 @@ const TeamMemberCard = ({ member }: { member: TeamMember }) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <div className="flex items-center space-x-3 p-2 cursor-pointer hover:bg-secondary/5 rounded-lg transition-colors">
-          <Avatar className="h-12 w-12">
+        <div className="flex items-center space-x-4 p-3 cursor-pointer rounded-lg transition-all duration-200 hover:bg-primary/5 group relative">
+          <Avatar className="h-14 w-14 border-2 border-transparent group-hover:border-primary/20 transition-all">
             <AvatarImage src={member.image} alt={member.name} />
             <AvatarFallback>{member.name[0]}</AvatarFallback>
           </Avatar>
-          <div className="text-left">
-            <p className="text-sm font-medium text-foreground">{member.name}</p>
-            <p className="text-xs text-muted-foreground">{member.role}</p>
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2">
+              <p className="text-base font-medium text-foreground">{member.name}</p>
+              <Info className="w-4 h-4 text-primary/60 group-hover:text-primary transition-colors" />
+            </div>
+            <p className="text-sm text-muted-foreground">{member.role}</p>
           </div>
         </div>
       </DialogTrigger>
@@ -69,7 +72,7 @@ const TeamMemberCard = ({ member }: { member: TeamMember }) => {
           <DialogTitle>Team Member Profile</DialogTitle>
         </DialogHeader>
         <div className="flex flex-col items-center space-y-4 pt-4">
-          <Avatar className="h-24 w-24">
+          <Avatar className="h-24 w-24 border-2 border-primary/20">
             <AvatarImage src={member.image} alt={member.name} />
             <AvatarFallback>{member.name[0]}</AvatarFallback>
           </Avatar>
@@ -77,7 +80,7 @@ const TeamMemberCard = ({ member }: { member: TeamMember }) => {
             <h3 className="text-lg font-semibold">{member.name}</h3>
             <p className="text-sm text-muted-foreground">{member.role}</p>
           </div>
-          <p className="text-sm text-center">{member.bio}</p>
+          <p className="text-sm text-center leading-relaxed">{member.bio}</p>
           <div className="flex flex-col space-y-2 w-full">
             <Button variant="outline" className="w-full justify-start" asChild>
               <a href={`mailto:${member.email}`}>
@@ -100,8 +103,12 @@ const TeamMemberCard = ({ member }: { member: TeamMember }) => {
 
 const TeamSection = () => {
   return (
-    <div className="bg-secondary p-6 rounded-xl">
-      <div className="space-y-4">
+    <div className="space-y-4">
+      <div className="text-sm text-muted-foreground leading-relaxed">
+        Meet your dedicated project team. Each member is here to ensure your project runs smoothly. 
+        Click on any team member to learn more about their role and contact them directly.
+      </div>
+      <div className="space-y-2">
         {teamMembers.map((member) => (
           <TeamMemberCard key={member.id} member={member} />
         ))}
