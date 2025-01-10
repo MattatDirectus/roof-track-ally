@@ -94,7 +94,7 @@ const ProjectStatus = () => {
       </Card>
 
       {showNotification && (
-        <Alert className="border-[#ffedeb] bg-[#fff4f2]">
+        <Alert className="border-[#ffedeb] bg-[#fff4f2] shadow-lg">
           <AlertDescription className="text-[#d92d20] font-medium">
             Materials delivery scheduled for March 20th. Please ensure driveway access.
           </AlertDescription>
@@ -141,7 +141,7 @@ const ProjectStatus = () => {
           <button
             key={index}
             onClick={action.action}
-            className="flex items-center justify-center p-6 bg-secondary rounded-xl border border-accent hover:border-primary/20 hover:bg-accent/5 transition-all shadow-sm hover:shadow-md space-x-3"
+            className="flex items-center justify-center p-6 bg-secondary rounded-xl border border-accent hover:border-primary/20 hover:bg-accent/5 transition-all shadow-lg hover:shadow-xl space-x-3"
           >
             <action.icon className="w-5 h-5 text-primary" />
             <span className="text-sm font-medium text-primary">{action.label}</span>
@@ -157,7 +157,7 @@ const ProjectStatus = () => {
             <Accordion type="single" collapsible key={stage.id}>
               <AccordionItem value={`stage-${stage.id}`} className="border-0">
                 <div 
-                  className={`bg-secondary p-6 rounded-xl border shadow-sm transition-all hover:shadow-md ${
+                  className={`bg-secondary p-6 rounded-xl border shadow-lg transition-all hover:shadow-xl ${
                     stage.status === "in-progress" ? "border-primary/20 bg-primary/5" : "border-accent"
                   }`}
                 >
