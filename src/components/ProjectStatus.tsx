@@ -97,20 +97,20 @@ const ProjectStatus = () => {
               return (
                 <div key={stage.id} className="flex flex-col items-center relative z-10 w-1/4">
                   <div 
-                    className={`w-12 h-12 rounded-full flex items-center justify-center border-2 transition-all duration-300 ${
-                      isCompleted ? "bg-success text-success-foreground border-success" :
-                      isInProgress ? "bg-primary text-primary-foreground border-primary animate-pulse" :
+                    className={`w-14 h-14 rounded-full flex items-center justify-center border-2 transition-colors ${
+                      isCompleted ? "bg-[#4CAF50] text-white border-[#4CAF50]" :
+                      isInProgress ? "bg-primary text-primary-foreground border-primary" :
                       "bg-muted text-muted-foreground border-muted-foreground/30"
                     }`}
                   >
-                    <Icon className="w-6 h-6" />
+                    <Icon className="w-7 h-7" />
                   </div>
-                  <p className={`text-xs mt-2 font-medium text-center ${
+                  <p className={`text-sm mt-2 font-medium text-center ${
                     isCompleted || isInProgress ? "text-foreground" : "text-muted-foreground"
                   }`}>
                     {stage.title}
                   </p>
-                  <p className={`text-[10px] text-center ${
+                  <p className={`text-xs text-center ${
                     isCompleted || isInProgress ? "text-foreground/70" : "text-muted-foreground"
                   }`}>
                     {stage.date}
@@ -120,12 +120,12 @@ const ProjectStatus = () => {
             })}
             
             {/* Progress Line */}
-            <div className="absolute top-6 left-0 w-full h-[2px] bg-muted -z-0">
+            <div className="absolute top-7 left-0 w-full h-[3px] bg-muted -z-0">
               <div 
-                className="h-full bg-primary transition-all duration-500"
+                className="h-full bg-gradient-to-r from-[#4CAF50] to-[#45a049] animate-gradient-shift"
                 style={{ 
                   width: `${getProgressPercentage()}%`,
-                  transition: 'width 1s ease-in-out'
+                  transition: 'width 0.5s ease-out'
                 }}
               />
             </div>

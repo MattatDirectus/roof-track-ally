@@ -33,7 +33,7 @@ export default {
           foreground: "#36454F",
         },
         success: {
-          DEFAULT: "#36454F",
+          DEFAULT: "#4CAF50",
           foreground: "#ffffff",
         },
         destructive: {
@@ -62,17 +62,13 @@ export default {
           "100%": { width: "var(--progress-width)" },
         },
         "gradient-shift": {
-          "0%, 100%": {
-            "background-position": "0% 50%",
-          },
-          "50%": {
-            "background-position": "100% 50%",
-          },
+          "0%": { "background-position": "0% 50%" },
+          "100%": { "background-position": "100% 50%" },
         },
       },
       animation: {
         "progress-advance": "progress-advance 1s ease-out forwards",
-        "gradient-shift": "gradient-shift 15s ease infinite",
+        "gradient-shift": "gradient-shift 3s linear infinite",
       },
       backgroundImage: {
         'gradient-subtle': 'linear-gradient(109.6deg, rgba(223,234,247,0.2) 11.2%, rgba(244,248,252,0.2) 91.1%)',
