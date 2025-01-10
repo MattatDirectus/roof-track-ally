@@ -211,7 +211,10 @@ const ProjectStatus = () => {
                         <div className="flex items-start justify-between w-full">
                           <div>
                             <h3 className="font-medium text-base md:text-lg truncate text-foreground">{stage.title}</h3>
-                            <p className="text-xs md:text-sm text-muted-foreground mt-1">{stage.date}</p>
+                            <div className="flex items-center space-x-1.5 mt-1">
+                              <Calendar className="w-3.5 h-3.5 text-muted-foreground" />
+                              <p className="text-xs md:text-sm text-muted-foreground">{stage.date}</p>
+                            </div>
                           </div>
                         </div>
                       </AccordionTrigger>
