@@ -9,6 +9,8 @@ import ScheduleDialog from "./ScheduleDialog";
 import TeamSection from "./TeamSection";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
+// ... keep existing code (component definition and states)
+
 const ProjectStatus = () => {
   const [showNotification, setShowNotification] = useState(true);
   const [messageDialogOpen, setMessageDialogOpen] = useState(false);
@@ -201,7 +203,7 @@ const ProjectStatus = () => {
       <div className="fixed bottom-0 left-0 right-0 bg-white py-4 border-t border-gray-200 shadow-lg">
         <div className="max-w-4xl mx-auto px-4 flex items-center justify-center gap-2">
           <span className="text-sm text-muted-foreground">Powered by</span>
-          <img src="lovable-uploads/ally-white-bg.png" alt="Ally" className="h-6" />
+          <img src="/lovable-uploads/d074cb2f-a0e4-40e0-843a-be460f08c9ae.png" alt="Ally" className="h-6" />
         </div>
       </div>
 
