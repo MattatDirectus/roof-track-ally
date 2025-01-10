@@ -19,38 +19,38 @@ export default {
     },
     extend: {
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
+        border: "#E5E7EB",
+        input: "#E5E7EB",
+        ring: "#36454F",
         background: "#ffffff",
-        foreground: "#1A1F2C",
+        foreground: "#36454F",
         primary: {
-          DEFAULT: "#0EA5E9",
-          foreground: "#1A1F2C",
+          DEFAULT: "#36454F",
+          foreground: "#ffffff",
         },
         secondary: {
           DEFAULT: "#ffffff",
-          foreground: "#1A1F2C",
+          foreground: "#36454F",
         },
         success: {
-          DEFAULT: "#10B981",
-          foreground: "#1A1F2C",
+          DEFAULT: "#36454F",
+          foreground: "#ffffff",
         },
         destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "#1A1F2C",
+          DEFAULT: "#EF4444",
+          foreground: "#ffffff",
         },
         muted: {
           DEFAULT: "#F8F9FA",
-          foreground: "#1A1F2C",
+          foreground: "#36454F",
         },
         accent: {
           DEFAULT: "#F1F5F9",
-          foreground: "#1A1F2C",
+          foreground: "#36454F",
         },
         card: {
           DEFAULT: "#ffffff",
-          foreground: "#1A1F2C",
+          foreground: "#36454F",
         }
       },
       fontFamily: {
@@ -61,12 +61,21 @@ export default {
           "0%": { width: "0%" },
           "100%": { width: "var(--progress-width)" },
         },
+        "gradient-shift": {
+          "0%, 100%": {
+            "background-position": "0% 50%",
+          },
+          "50%": {
+            "background-position": "100% 50%",
+          },
+        },
       },
       animation: {
         "progress-advance": "progress-advance 1s ease-out forwards",
+        "gradient-shift": "gradient-shift 15s ease infinite",
       },
       backgroundImage: {
-        'gradient-dark': 'linear-gradient(to bottom right, #E5F2FF, #F1F5F9)',
+        'gradient-subtle': 'linear-gradient(109.6deg, rgba(223,234,247,0.2) 11.2%, rgba(244,248,252,0.2) 91.1%)',
       },
     },
   },

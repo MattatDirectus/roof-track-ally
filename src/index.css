@@ -7,24 +7,24 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 210 15% 26%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 210 15% 26%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 199 91% 57%;
-    --primary-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 210 15% 26%;
+    --primary: 210 15% 26%;
+    --primary-foreground: 0 0% 100%;
     --secondary: 0 0% 100%;
-    --secondary-foreground: 222.2 84% 4.9%;
+    --secondary-foreground: 210 15% 26%;
     --muted: 210 40% 98%;
-    --muted-foreground: 222.2 84% 4.9%;
+    --muted-foreground: 210 15% 26%;
     --accent: 210 40% 98%;
-    --accent-foreground: 222.2 84% 4.9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 222.2 84% 4.9%;
+    --accent-foreground: 210 15% 26%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 210 15% 26%;
     --radius: 0.5rem;
   }
 
@@ -34,9 +34,21 @@
 
   body {
     @apply bg-background text-foreground font-sans;
+    background-image: linear-gradient(109.6deg, rgba(223,234,247,0.2) 11.2%, rgba(244,248,252,0.2) 91.1%);
+    background-size: 200% 200%;
+    animation: gradient-shift 15s ease infinite;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply text-foreground font-medium;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
   }
 }
