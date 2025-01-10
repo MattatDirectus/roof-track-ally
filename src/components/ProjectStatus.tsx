@@ -162,29 +162,12 @@ const ProjectStatus = () => {
           <CardTitle className="text-lg font-semibold text-primary">Your Team</CardTitle>
         </CardHeader>
         <CardContent className="pt-0">
-          <TeamSection />
+          <TeamSection projectStages={projectStages} />
         </CardContent>
       </Card>
 
       {/* Materials Tracking Map */}
       <MaterialsTrackingMap />
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {[
-          { icon: MessageCircle, label: "Message", action: () => setMessageDialogOpen(true) },
-          { icon: FileText, label: "Documents", action: () => setDocumentViewerOpen(true) },
-          { icon: Clock, label: "Schedule", action: () => setScheduleDialogOpen(true) }
-        ].map((action, index) => (
-          <button
-            key={index}
-            onClick={action.action}
-            className="flex items-center justify-center p-6 bg-secondary rounded-xl border border-accent hover:border-primary/20 hover:bg-accent/5 transition-all shadow-lg hover:shadow-xl space-x-3"
-          >
-            <action.icon className="w-5 h-5 text-primary" />
-            <span className="text-sm font-medium text-primary">{action.label}</span>
-          </button>
-        ))}
-      </div>
 
       {/* Timeline */}
       <div className="space-y-4">

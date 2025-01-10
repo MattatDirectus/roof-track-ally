@@ -1,4 +1,4 @@
-import { UserRound, Mail, Phone, Info } from "lucide-react";
+import { UserRound, Mail, Phone, Info, MessageCircle, FileText, Clock } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -8,6 +8,10 @@ import {
 } from "@/components/ui/dialog";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import MessageDialog from "./MessageDialog";
+import { DocumentViewer } from "./DocumentViewer";
+import ScheduleDialog from "./ScheduleDialog";
 
 interface TeamMember {
   id: number;
@@ -101,9 +105,13 @@ const TeamMemberCard = ({ member }: { member: TeamMember }) => {
   );
 };
 
-const TeamSection = () => {
+const TeamSection = ({ projectStages }: { projectStages: any[] }) => {
+  const [messageDialogOpen, setMessageDialogOpen] = useState(false);
+  const [documentViewerOpen, setDocumentViewerOpen] = useState(false);
+  const [scheduleDialogOpen, setScheduleDialogOpen] = useState(false);
+
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <div className="text-sm text-muted-foreground leading-relaxed">
         Meet your dedicated project team. Each member is here to ensure your project runs smoothly. 
         Click on any team member to learn more about their role and contact them directly.
@@ -113,6 +121,39 @@ const TeamSection = () => {
           <TeamMemberCard key={member.id} member={member} />
         ))}
       </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-accent">
+        {[
+          { icon: MessageCircle, label: "Message", action: () => setMessageDialogOpen(true) },
+          { icon: FileText, label: "Documents", action: () => setDocumentViewerOpen(true) },
+          { icon: Clock, label: "Schedule", action: () => setScheduleDialogOpen(true) }
+        ].map((action, index) => (
+          <button
+            key={index}
+            onClick={action.action}
+            className="flex items-center justify-center p-6 bg-secondary rounded-xl border border-accent hover:border-primary/20 hover:bg-accent/5 transition-all shadow-lg hover:shadow-xl space-x-3"
+          >
+            <action.icon className="w-5 h-5 text-primary" />
+            <span className="text-sm font-medium text-primary">{action.label}</span>
+          </button>
+        ))}
+      </div>
+
+      <MessageDialog 
+        open={messageDialogOpen} 
+        onOpenChange={setMessageDialogOpen} 
+      />
+
+      <DocumentViewer
+        open={documentViewerOpen}
+        onOpenChange={setDocumentViewerOpen}
+      />
+
+      <ScheduleDialog
+        open={scheduleDialogOpen}
+        onOpenChange={setScheduleDialogOpen}
+        projectStages={projectStages}
+      />
     </div>
   );
 };
