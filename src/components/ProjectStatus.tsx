@@ -79,8 +79,8 @@ const ProjectStatus = () => {
     <div className="w-full max-w-4xl mx-auto p-4 md:p-6 space-y-6 bg-background min-h-screen relative pb-16">
       {/* Header */}
       <div className="bg-gradient-dark p-6 rounded-2xl shadow-lg w-full">
-        <h1 className="text-2xl md:text-3xl font-bold text-white">Good afternoon, Mr. Carter!</h1>
-        <p className="text-white/80 text-sm md:text-base mt-2">Here's the latest update on your roof renovation (#RF-2024-001)</p>
+        <h1 className="text-2xl md:text-3xl font-bold text-foreground">Good afternoon, Mr. Carter!</h1>
+        <p className="text-foreground/80 text-sm md:text-base mt-2">Here's the latest update on your roof renovation (#RF-2024-001)</p>
       </div>
 
       {/* Team Section */}

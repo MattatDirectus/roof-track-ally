@@ -59,7 +59,7 @@ const TeamMemberCard = ({ member }: { member: TeamMember }) => {
             <AvatarFallback>{member.name[0]}</AvatarFallback>
           </Avatar>
           <div className="text-left">
-            <p className="text-sm font-medium text-white">{member.name}</p>
+            <p className="text-sm font-medium text-foreground">{member.name}</p>
             <p className="text-xs text-muted-foreground">{member.role}</p>
           </div>
         </div>
