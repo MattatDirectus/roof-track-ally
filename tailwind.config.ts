@@ -22,15 +22,15 @@ export default {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "#F1F0FB",
+        background: "#ffffff",
         foreground: "#1A1F2C",
         primary: {
           DEFAULT: "#0EA5E9",
           foreground: "#ffffff",
         },
         secondary: {
-          DEFAULT: "#F3F3F3",
-          foreground: "#403E43",
+          DEFAULT: "#ffffff",
+          foreground: "#1A1F2C",
         },
         success: {
           DEFAULT: "#10B981",
@@ -41,16 +41,16 @@ export default {
           foreground: "hsl(var(--destructive-foreground))",
         },
         muted: {
-          DEFAULT: "#E5DEFF",
-          foreground: "#403E43",
+          DEFAULT: "#F8F9FA",
+          foreground: "#1A1F2C",
         },
         accent: {
-          DEFAULT: "#D3E4FD",
-          foreground: "#403E43",
+          DEFAULT: "#F1F5F9",
+          foreground: "#1A1F2C",
         },
         card: {
-          DEFAULT: "#F3F3F3",
-          foreground: "#403E43",
+          DEFAULT: "#ffffff",
+          foreground: "#1A1F2C",
         }
       },
       fontFamily: {
@@ -66,7 +66,7 @@ export default {
         "progress-advance": "progress-advance 1s ease-out forwards",
       },
       backgroundImage: {
-        'gradient-dark': 'linear-gradient(to bottom right, #F1F0FB, #E5DEFF)',
+        'gradient-dark': 'linear-gradient(to bottom right, #E5F2FF, #F1F5F9)',
       },
     },
   },
