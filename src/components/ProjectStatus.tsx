@@ -11,7 +11,6 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import MaterialsTrackingMap from './MaterialsTrackingMap';
 
 const ProjectStatus = () => {
-  const [showNotification, setShowNotification] = useState(true);
   const [messageDialogOpen, setMessageDialogOpen] = useState(false);
   const [documentViewerOpen, setDocumentViewerOpen] = useState(false);
   const [scheduleDialogOpen, setScheduleDialogOpen] = useState(false);
@@ -140,13 +139,16 @@ const ProjectStatus = () => {
                   return <CurrentIcon className="w-6 h-6 text-primary" />;
                 })()}
               </div>
-              <div>
-                <h2 className="text-lg font-medium text-foreground">{getCurrentStage().title}</h2>
-                <p className="text-sm text-muted-foreground mt-1">{getCurrentStage().details}</p>
+              <div className="space-y-3 flex-1">
+                <div>
+                  <h2 className="text-lg font-medium text-foreground">{getCurrentStage().title}</h2>
+                  <p className="text-sm text-muted-foreground mt-1">{getCurrentStage().details}</p>
+                </div>
                 {getCurrentStage().notification && (
-                  <p className="text-sm text-primary mt-2 bg-primary/10 p-2 rounded-lg">
-                    {getCurrentStage().notification}
-                  </p>
+                  <div className="bg-primary/10 p-4 rounded-lg border border-primary/20">
+                    <p className="text-primary font-medium">Materials arriving in 3 days!</p>
+                    <p className="text-sm text-primary/80 mt-1">Please ensure driveway access</p>
+                  </div>
                 )}
               </div>
             </div>
@@ -154,7 +156,6 @@ const ProjectStatus = () => {
         </div>
       </div>
 
-      {/* Rest of the components */}
       {/* Team Section */}
       <Card className="border-none shadow-lg bg-secondary">
         <CardHeader className="pb-2">
@@ -165,18 +166,9 @@ const ProjectStatus = () => {
         </CardContent>
       </Card>
 
-      {showNotification && (
-        <Alert className="border-[#ffedeb] bg-[#fff4f2] shadow-lg">
-          <AlertDescription className="text-[#d92d20] font-medium">
-            Materials delivery scheduled for March 20th. Please ensure driveway access.
-          </AlertDescription>
-        </Alert>
-      )}
-
       {/* Materials Tracking Map */}
       <MaterialsTrackingMap />
 
-      {/* Quick Actions */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {[
           { icon: MessageCircle, label: "Message", action: () => setMessageDialogOpen(true) },
