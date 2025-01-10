@@ -7,7 +7,6 @@ import { Package } from 'lucide-react';
 
 const MaterialsTrackingMap = () => {
   const mapContainer = useRef<HTMLDivElement>(null);
-  const map = useRef<mapboxgl.Map | null>(null);
   const [apiKey, setApiKey] = useState('');
   const [isMapInitialized, setIsMapInitialized] = useState(false);
 
@@ -16,70 +15,78 @@ const MaterialsTrackingMap = () => {
   const deliveryLocation: [number, number] = [-73.955242, 40.750610]; // Example destination
 
   useEffect(() => {
-    if (!mapContainer.current || !apiKey || isMapInitialized) return;
+    let mapInstance: mapboxgl.Map | null = null;
 
-    try {
-      mapboxgl.accessToken = apiKey;
-      
-      map.current = new mapboxgl.Map({
-        container: mapContainer.current,
-        style: 'mapbox://styles/mapbox/light-v11',
-        center: [(warehouseLocation[0] + deliveryLocation[0]) / 2, 
-                (warehouseLocation[1] + deliveryLocation[1]) / 2],
-        zoom: 11,
-        pitch: 45,
-      });
+    const initializeMap = async () => {
+      if (!mapContainer.current || !apiKey || isMapInitialized) return;
 
-      // Add markers for warehouse and delivery location
-      new mapboxgl.Marker({ color: "#36454F" })
-        .setLngLat(warehouseLocation)
-        .setPopup(new mapboxgl.Popup().setHTML("<h3>Warehouse</h3><p>Materials Origin</p>"))
-        .addTo(map.current);
-
-      new mapboxgl.Marker({ color: "#36454F" })
-        .setLngLat(deliveryLocation)
-        .setPopup(new mapboxgl.Popup().setHTML("<h3>Delivery Location</h3><p>Your Address</p>"))
-        .addTo(map.current);
-
-      // Draw a line between the two points
-      map.current.on('load', () => {
-        if (!map.current) return;
+      try {
+        mapboxgl.accessToken = apiKey;
         
-        map.current.addSource('route', {
-          type: 'geojson',
-          data: {
-            type: 'Feature',
-            properties: {},
-            geometry: {
-              type: 'LineString',
-              coordinates: [warehouseLocation, deliveryLocation]
+        mapInstance = new mapboxgl.Map({
+          container: mapContainer.current,
+          style: 'mapbox://styles/mapbox/light-v11',
+          center: [(warehouseLocation[0] + deliveryLocation[0]) / 2, 
+                  (warehouseLocation[1] + deliveryLocation[1]) / 2],
+          zoom: 11,
+          pitch: 45,
+        });
+
+        // Add markers for warehouse and delivery location
+        new mapboxgl.Marker({ color: "#36454F" })
+          .setLngLat(warehouseLocation)
+          .setPopup(new mapboxgl.Popup().setHTML("<h3>Warehouse</h3><p>Materials Origin</p>"))
+          .addTo(mapInstance);
+
+        new mapboxgl.Marker({ color: "#36454F" })
+          .setLngLat(deliveryLocation)
+          .setPopup(new mapboxgl.Popup().setHTML("<h3>Delivery Location</h3><p>Your Address</p>"))
+          .addTo(mapInstance);
+
+        // Draw a line between the two points
+        mapInstance.on('load', () => {
+          if (!mapInstance) return;
+          
+          mapInstance.addSource('route', {
+            type: 'geojson',
+            data: {
+              type: 'Feature',
+              properties: {},
+              geometry: {
+                type: 'LineString',
+                coordinates: [warehouseLocation, deliveryLocation]
+              }
             }
-          }
+          });
+
+          mapInstance.addLayer({
+            id: 'route',
+            type: 'line',
+            source: 'route',
+            layout: {
+              'line-join': 'round',
+              'line-cap': 'round'
+            },
+            paint: {
+              'line-color': '#36454F',
+              'line-width': 3,
+              'line-dasharray': [2, 2]
+            }
+          });
         });
 
-        map.current.addLayer({
-          id: 'route',
-          type: 'line',
-          source: 'route',
-          layout: {
-            'line-join': 'round',
-            'line-cap': 'round'
-          },
-          paint: {
-            'line-color': '#36454F',
-            'line-width': 3,
-            'line-dasharray': [2, 2]
-          }
-        });
-      });
+        setIsMapInitialized(true);
+      } catch (error) {
+        console.error('Error initializing map:', error);
+      }
+    };
 
-      setIsMapInitialized(true);
-    } catch (error) {
-      console.error('Error initializing map:', error);
-    }
+    initializeMap();
 
     return () => {
-      map.current?.remove();
+      if (mapInstance) {
+        mapInstance.remove();
+      }
     };
   }, [apiKey, isMapInitialized]);
 
