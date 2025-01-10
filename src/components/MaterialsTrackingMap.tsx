@@ -12,8 +12,8 @@ const MaterialsTrackingMap = () => {
   const [isMapInitialized, setIsMapInitialized] = useState(false);
 
   // Hardcoded delivery route coordinates (warehouse to delivery location)
-  const warehouseLocation = [-73.935242, 40.730610]; // Example NYC location
-  const deliveryLocation = [-73.955242, 40.750610]; // Example destination
+  const warehouseLocation: [number, number] = [-73.935242, 40.730610]; // Example NYC location
+  const deliveryLocation: [number, number] = [-73.955242, 40.750610]; // Example destination
 
   useEffect(() => {
     if (!mapContainer.current || !apiKey || isMapInitialized) return;
