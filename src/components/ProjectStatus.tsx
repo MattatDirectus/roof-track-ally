@@ -78,20 +78,62 @@ const ProjectStatus = () => {
 
   return (
     <div className="w-full max-w-4xl mx-auto p-4 md:p-6 space-y-6 bg-background min-h-screen relative pb-16">
-      {/* Header */}
-      <div className="bg-gradient-dark p-6 rounded-2xl shadow-lg w-full">
-        <h1 className="text-2xl md:text-3xl font-bold text-foreground">Good afternoon, Mr. Carter!</h1>
-        <p className="text-foreground/80 text-sm md:text-base mt-2">Here's the latest update on your roof renovation (#RF-2024-001)</p>
-      </div>
+      {/* Combined Header and Current Stage */}
+      <div className="bg-gradient-subtle p-6 rounded-2xl shadow-lg w-full space-y-6">
+        <div>
+          <h1 className="text-2xl md:text-3xl font-bold text-foreground">Good afternoon, Mr. Carter!</h1>
+          <p className="text-foreground/80 text-sm md:text-base mt-2">Here's the latest update on your roof renovation (#RF-2024-001)</p>
+        </div>
+        
+        <div className="space-y-4">
+          {/* Progress Steps */}
+          <div className="flex justify-between items-center w-full relative">
+            {projectStages.map((stage, index) => {
+              const Icon = stage.icon;
+              const isCompleted = stage.status === "completed";
+              const isInProgress = stage.status === "in-progress";
+              const isPending = stage.status === "pending";
+              
+              return (
+                <div key={stage.id} className="flex flex-col items-center relative z-10 w-1/4">
+                  <div 
+                    className={`w-12 h-12 rounded-full flex items-center justify-center border-2 transition-all duration-300 ${
+                      isCompleted ? "bg-success text-success-foreground border-success" :
+                      isInProgress ? "bg-primary text-primary-foreground border-primary animate-pulse" :
+                      "bg-muted text-muted-foreground border-muted-foreground/30"
+                    }`}
+                  >
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  <p className={`text-xs mt-2 font-medium text-center ${
+                    isCompleted || isInProgress ? "text-foreground" : "text-muted-foreground"
+                  }`}>
+                    {stage.title}
+                  </p>
+                  <p className={`text-[10px] text-center ${
+                    isCompleted || isInProgress ? "text-foreground/70" : "text-muted-foreground"
+                  }`}>
+                    {stage.date}
+                  </p>
+                </div>
+              );
+            })}
+            
+            {/* Progress Line */}
+            <div className="absolute top-6 left-0 w-full h-[2px] bg-muted -z-0">
+              <div 
+                className="h-full bg-primary transition-all duration-500"
+                style={{ 
+                  width: `${getProgressPercentage()}%`,
+                  transition: 'width 1s ease-in-out'
+                }}
+              />
+            </div>
+          </div>
 
-      {/* Current Stage - Moved up */}
-      <Card className="border-none shadow-lg bg-secondary">
-        <CardHeader className="pb-2">
-          <CardTitle className="text-lg font-semibold text-primary">Current Stage</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <div className="flex items-center space-x-4">
+          {/* Current Stage Details */}
+          <div className="bg-card/50 backdrop-blur-sm p-4 rounded-xl border border-accent mt-6">
+            <div className="flex items-start space-x-4">
               <div className="p-3 rounded-xl bg-primary/10">
                 {(() => {
                   const CurrentIcon = getCurrentStage().icon;
@@ -100,20 +142,19 @@ const ProjectStatus = () => {
               </div>
               <div>
                 <h2 className="text-lg font-medium text-foreground">{getCurrentStage().title}</h2>
-                <p className="text-sm text-muted-foreground">{getCurrentStage().details}</p>
+                <p className="text-sm text-muted-foreground mt-1">{getCurrentStage().details}</p>
+                {getCurrentStage().notification && (
+                  <p className="text-sm text-primary mt-2 bg-primary/10 p-2 rounded-lg">
+                    {getCurrentStage().notification}
+                  </p>
+                )}
               </div>
             </div>
           </div>
-          <div className="mt-6">
-            <div className="flex justify-between text-sm mb-2">
-              <span className="text-muted-foreground">Overall Progress</span>
-              <span className="font-medium text-primary">{Math.round(getProgressPercentage())}%</span>
-            </div>
-            <Progress value={getProgressPercentage()} className="h-2 bg-muted" />
-          </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
+      {/* Rest of the components */}
       {/* Team Section */}
       <Card className="border-none shadow-lg bg-secondary">
         <CardHeader className="pb-2">
