@@ -84,28 +84,7 @@ const ProjectStatus = () => {
         <p className="text-foreground/80 text-sm md:text-base mt-2">Here's the latest update on your roof renovation (#RF-2024-001)</p>
       </div>
 
-      {/* Team Section */}
-      <Card className="border-none shadow-lg bg-secondary">
-        <CardHeader className="pb-2">
-          <CardTitle className="text-lg font-semibold text-primary">Your Team</CardTitle>
-        </CardHeader>
-        <CardContent className="pt-0">
-          <TeamSection />
-        </CardContent>
-      </Card>
-
-      {showNotification && (
-        <Alert className="border-[#ffedeb] bg-[#fff4f2] shadow-lg">
-          <AlertDescription className="text-[#d92d20] font-medium">
-            Materials delivery scheduled for March 20th. Please ensure driveway access.
-          </AlertDescription>
-        </Alert>
-      )}
-
-      {/* Materials Tracking Map */}
-      <MaterialsTrackingMap />
-
-      {/* Current Stage */}
+      {/* Current Stage - Moved up */}
       <Card className="border-none shadow-lg bg-secondary">
         <CardHeader className="pb-2">
           <CardTitle className="text-lg font-semibold text-primary">Current Stage</CardTitle>
@@ -134,6 +113,27 @@ const ProjectStatus = () => {
           </div>
         </CardContent>
       </Card>
+
+      {/* Team Section */}
+      <Card className="border-none shadow-lg bg-secondary">
+        <CardHeader className="pb-2">
+          <CardTitle className="text-lg font-semibold text-primary">Your Team</CardTitle>
+        </CardHeader>
+        <CardContent className="pt-0">
+          <TeamSection />
+        </CardContent>
+      </Card>
+
+      {showNotification && (
+        <Alert className="border-[#ffedeb] bg-[#fff4f2] shadow-lg">
+          <AlertDescription className="text-[#d92d20] font-medium">
+            Materials delivery scheduled for March 20th. Please ensure driveway access.
+          </AlertDescription>
+        </Alert>
+      )}
+
+      {/* Materials Tracking Map */}
+      <MaterialsTrackingMap />
 
       {/* Quick Actions */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
