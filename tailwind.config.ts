@@ -26,7 +26,7 @@ export default {
         foreground: "#1A1F2C",
         primary: {
           DEFAULT: "#0EA5E9",
-          foreground: "#ffffff",
+          foreground: "#1A1F2C",
         },
         secondary: {
           DEFAULT: "#ffffff",
@@ -34,11 +34,11 @@ export default {
         },
         success: {
           DEFAULT: "#10B981",
-          foreground: "#ffffff",
+          foreground: "#1A1F2C",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+          foreground: "#1A1F2C",
         },
         muted: {
           DEFAULT: "#F8F9FA",
