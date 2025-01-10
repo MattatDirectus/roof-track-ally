@@ -141,8 +141,8 @@ const ProjectStatus = () => {
                   <p className="text-sm text-muted-foreground mt-1">{getCurrentStage().details}</p>
                 </div>
                 {getCurrentStage().notification && (
-                  <div className="bg-primary/10 p-4 rounded-lg border border-primary/20">
-                    <p className="text-primary font-medium">Materials arriving in 3 days!</p>
+                  <div className="bg-primary/10 p-4 rounded-lg border-2 border-primary/20 shadow-sm">
+                    <p className="text-primary font-semibold text-lg">Materials arriving in 3 days!</p>
                     <p className="text-sm text-primary/80 mt-1">Please ensure driveway access</p>
                   </div>
                 )}
