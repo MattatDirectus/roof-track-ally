@@ -8,8 +8,7 @@ import { DocumentViewer } from "./DocumentViewer";
 import ScheduleDialog from "./ScheduleDialog";
 import TeamSection from "./TeamSection";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-
-// ... keep existing code (component definition and states)
+import MaterialsTrackingMap from './MaterialsTrackingMap';
 
 const ProjectStatus = () => {
   const [showNotification, setShowNotification] = useState(true);
@@ -102,6 +101,9 @@ const ProjectStatus = () => {
           </AlertDescription>
         </Alert>
       )}
+
+      {/* Materials Tracking Map */}
+      <MaterialsTrackingMap />
 
       {/* Current Stage */}
       <Card className="border-none shadow-lg bg-secondary">
