@@ -1,23 +1,22 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { Card } from './ui/card';
-import { Input } from './ui/input';
 import { Package } from 'lucide-react';
 
 const MaterialsTrackingMap = () => {
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapInstance = useRef<mapboxgl.Map | null>(null);
-  const [apiKey, setApiKey] = useState('');
-
+  
   // Hardcoded delivery route coordinates (warehouse to delivery location)
   const warehouseLocation: [number, number] = [-73.935242, 40.730610]; // Example NYC location
   const deliveryLocation: [number, number] = [-73.955242, 40.750610]; // Example destination
 
   useEffect(() => {
-    if (!mapContainer.current || !apiKey || mapInstance.current) return;
+    if (!mapContainer.current || mapInstance.current) return;
 
-    mapboxgl.accessToken = apiKey;
+    // Replace 'YOUR_MAPBOX_PUBLIC_TOKEN' with your actual public token
+    mapboxgl.accessToken = 'YOUR_MAPBOX_PUBLIC_TOKEN';
     
     mapInstance.current = new mapboxgl.Map({
       container: mapContainer.current,
@@ -78,37 +77,17 @@ const MaterialsTrackingMap = () => {
         mapInstance.current = null;
       }
     };
-  }, [apiKey]);
+  }, []);
 
   return (
     <Card className="p-4 space-y-4">
-      {!apiKey ? (
-        <div className="space-y-4">
-          <div className="flex items-center gap-2">
-            <Package className="w-5 h-5 text-primary" />
-            <h3 className="text-lg font-medium">Materials Tracking</h3>
-          </div>
-          <p className="text-sm text-muted-foreground">
-            Please enter your Mapbox public token to view the materials tracking map.
-            You can find this at mapbox.com in your account dashboard.
-          </p>
-          <Input
-            type="text"
-            placeholder="Enter Mapbox public token"
-            value={apiKey}
-            onChange={(e) => setApiKey(e.target.value)}
-            className="w-full"
-          />
+      <div className="space-y-4">
+        <div className="flex items-center gap-2">
+          <Package className="w-5 h-5 text-primary" />
+          <h3 className="text-lg font-medium">Materials Tracking</h3>
         </div>
-      ) : (
-        <div className="space-y-4">
-          <div className="flex items-center gap-2">
-            <Package className="w-5 h-5 text-primary" />
-            <h3 className="text-lg font-medium">Materials Tracking</h3>
-          </div>
-          <div ref={mapContainer} className="h-[300px] w-full rounded-lg overflow-hidden" />
-        </div>
-      )}
+        <div ref={mapContainer} className="h-[300px] w-full rounded-lg overflow-hidden" />
+      </div>
     </Card>
   );
 };
