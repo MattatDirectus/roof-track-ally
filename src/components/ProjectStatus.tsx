@@ -22,7 +22,7 @@ const ProjectStatus = () => {
       color: "Charcoal",
       quantity: "24 squares (72 bundles)",
       details: "High-definition shingles with LayerLock technology",
-      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e"
+      image: "/lovable-uploads/ab5ef92c-e89c-44ed-93da-63b87f5111ec.png"
     },
     {
       name: "Synthetic Underlayment",
@@ -172,7 +172,7 @@ const ProjectStatus = () => {
                   <p className="text-sm text-muted-foreground mt-1">{getCurrentStage().details}</p>
                 </div>
                 {getCurrentStage().notification && (
-                  <div className="bg-primary/10 p-4 rounded-lg border-2 border-primary/20 shadow-sm">
+                  <div className="w-full bg-primary/10 p-4 rounded-lg border-2 border-primary/20 shadow-sm">
                     <p className="text-primary font-semibold text-lg mt-1">Materials arriving in 3 days!</p>
                     <p className="text-sm text-primary/80 mt-1">Please ensure driveway access</p>
                     
@@ -198,7 +198,7 @@ const ProjectStatus = () => {
                       </div>
                       
                       <div className="space-y-3">
-                        <h3 className="font-medium text-primary">Materials List:</h3>
+                        <h3 className="font-medium text-primary">What's arriving:</h3>
                         {materials.map((material, index) => (
                           <div 
                             key={index} 
@@ -314,3 +314,4 @@ const ProjectStatus = () => {
 };
 
 export default ProjectStatus;
+
