@@ -135,14 +135,14 @@ const ProjectStatus = () => {
                   return <CurrentIcon className="w-6 h-6 text-primary" />;
                 })()}
               </div>
-              <div className="space-y-3 flex-1">
+              <div className="space-y-3 w-full">
                 <div>
                   <h2 className="text-lg font-medium text-foreground">{getCurrentStage().title}</h2>
                   <p className="text-sm text-muted-foreground mt-1">{getCurrentStage().details}</p>
                 </div>
                 {getCurrentStage().notification && (
                   <div className="bg-primary/10 p-4 rounded-lg border-2 border-primary/20 shadow-sm">
-                    <p className="text-primary font-semibold text-lg">Materials arriving in 3 days!</p>
+                    <p className="text-primary font-semibold text-lg mt-1">Materials arriving in 3 days!</p>
                     <p className="text-sm text-primary/80 mt-1">Please ensure driveway access</p>
                   </div>
                 )}
@@ -240,3 +240,4 @@ const ProjectStatus = () => {
 };
 
 export default ProjectStatus;
+
