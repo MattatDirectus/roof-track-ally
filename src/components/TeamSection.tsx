@@ -24,7 +24,7 @@ const teamMembers: TeamMember[] = [
     id: 1,
     name: "John Carter",
     role: "Account Manager",
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
+    image: "/lovable-uploads/a8c80535-257c-4321-9ae3-ba6efc545740.png",
     email: "john.carter@example.com",
     phone: "(555) 123-4567",
     bio: "15+ years experience in project management, ensuring your roof replacement project runs smoothly from start to finish."
@@ -33,7 +33,7 @@ const teamMembers: TeamMember[] = [
     id: 2,
     name: "Sarah Miller",
     role: "Billing Manager",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
+    image: "/lovable-uploads/e148e6f1-aa2a-4ff1-b2d2-10b25c04b99a.png",
     email: "sarah.miller@example.com",
     phone: "(555) 234-5678",
     bio: "Dedicated to providing transparent billing and helping you understand every aspect of your project's financials."
@@ -42,7 +42,7 @@ const teamMembers: TeamMember[] = [
     id: 3,
     name: "Mike Rodriguez",
     role: "Lead Installer",
-    image: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952",
+    image: "/lovable-uploads/d05dea90-4d47-4825-bbb1-abbfe2150720.png",
     email: "mike.rodriguez@example.com",
     phone: "(555) 345-6789",
     bio: "Master craftsman with 20+ years of roofing experience, certified in all major roofing systems."
