@@ -6,6 +6,7 @@ import ScheduleDialog from "./ScheduleDialog";
 import TeamSection from "./TeamSection";
 import StageTimeline from "./StageTimeline";
 import CurrentStageCard from "./CurrentStageCard";
+import MaterialsTrackingMap from "./MaterialsTrackingMap";
 
 const ProjectStatus = () => {
   const [messageDialogOpen, setMessageDialogOpen] = useState(false);
@@ -88,6 +89,7 @@ const ProjectStatus = () => {
         
         <StageTimeline stages={projectStages} />
         <CurrentStageCard stage={getCurrentStage()} materials={materials} />
+        <MaterialsTrackingMap />
       </div>
 
       <TeamSection projectStages={projectStages} />

@@ -1,22 +1,23 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { Card } from './ui/card';
-import { Package } from 'lucide-react';
+import { Package, Map } from 'lucide-react';
+import { Input } from './ui/input';
 
 const MaterialsTrackingMap = () => {
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapInstance = useRef<mapboxgl.Map | null>(null);
+  const [mapboxToken, setMapboxToken] = useState('');
   
   // Hardcoded delivery route coordinates (warehouse to delivery location)
   const warehouseLocation: [number, number] = [-73.935242, 40.730610]; // Example NYC location
   const deliveryLocation: [number, number] = [-73.955242, 40.750610]; // Example destination
 
   useEffect(() => {
-    if (!mapContainer.current || mapInstance.current) return;
+    if (!mapContainer.current || mapInstance.current || !mapboxToken) return;
 
-    // Replace 'YOUR_MAPBOX_PUBLIC_TOKEN' with your actual public token
-    mapboxgl.accessToken = 'pk.eyJ1IjoibWF0dG1pbm9yMSIsImEiOiJjbTVxNjZxemQwOGlyMnZvdG1ubTQxejE1In0._d2EnS_yLWAE9TafnMDYFg';
+    mapboxgl.accessToken = mapboxToken;
     
     mapInstance.current = new mapboxgl.Map({
       container: mapContainer.current,
@@ -77,15 +78,30 @@ const MaterialsTrackingMap = () => {
         mapInstance.current = null;
       }
     };
-  }, []);
+  }, [mapboxToken]);
 
   return (
     <Card className="p-4 space-y-4">
       <div className="space-y-4">
         <div className="flex items-center gap-2">
-          <Package className="w-5 h-5 text-primary" />
+          <Map className="w-5 h-5 text-primary" />
           <h3 className="text-lg font-medium">Materials Tracking</h3>
         </div>
+        {!mapboxToken && (
+          <div className="space-y-2">
+            <p className="text-sm text-muted-foreground">
+              Please enter your Mapbox public token to view the delivery tracking map.
+              You can find this in your Mapbox account dashboard.
+            </p>
+            <Input
+              type="text"
+              placeholder="Enter Mapbox token..."
+              value={mapboxToken}
+              onChange={(e) => setMapboxToken(e.target.value)}
+              className="w-full"
+            />
+          </div>
+        )}
         <div ref={mapContainer} className="h-[300px] w-full rounded-lg overflow-hidden" />
       </div>
     </Card>
