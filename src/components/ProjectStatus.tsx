@@ -1,4 +1,4 @@
-import { CheckCircle2, Clock, Package, Calendar, MessageCircle, FileText } from "lucide-react";
+import { CheckCircle2, Clock, Package, Calendar, MessageCircle, FileText, ChevronRight, ChevronLeft } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -14,6 +14,37 @@ const ProjectStatus = () => {
   const [messageDialogOpen, setMessageDialogOpen] = useState(false);
   const [documentViewerOpen, setDocumentViewerOpen] = useState(false);
   const [scheduleDialogOpen, setScheduleDialogOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const materials = [
+    {
+      name: "GAF Timberline HDZ Architectural Shingles",
+      color: "Charcoal",
+      quantity: "24 squares (72 bundles)",
+      details: "High-definition shingles with LayerLock technology",
+      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e"
+    },
+    {
+      name: "Synthetic Underlayment",
+      quantity: "5 rolls (1000 sq ft each)",
+      details: "Premium moisture barrier protection",
+      image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7"
+    },
+    {
+      name: "Ice & Water Shield",
+      quantity: "2 rolls (200 sq ft each)",
+      details: "For valleys and vulnerable areas",
+      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
+    }
+  ];
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % materials.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + materials.length) % materials.length);
+  };
 
   const projectStages = [
     { 
@@ -144,6 +175,49 @@ const ProjectStatus = () => {
                   <div className="bg-primary/10 p-4 rounded-lg border-2 border-primary/20 shadow-sm">
                     <p className="text-primary font-semibold text-lg mt-1">Materials arriving in 3 days!</p>
                     <p className="text-sm text-primary/80 mt-1">Please ensure driveway access</p>
+                    
+                    <div className="mt-4 space-y-4">
+                      <div className="relative h-48 w-full overflow-hidden rounded-lg">
+                        <img 
+                          src={materials[currentImageIndex].image} 
+                          alt={materials[currentImageIndex].name}
+                          className="w-full h-full object-cover"
+                        />
+                        <button 
+                          onClick={prevImage}
+                          className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 p-1 rounded-full text-white hover:bg-black/70 transition-colors"
+                        >
+                          <ChevronLeft className="w-5 h-5" />
+                        </button>
+                        <button 
+                          onClick={nextImage}
+                          className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 p-1 rounded-full text-white hover:bg-black/70 transition-colors"
+                        >
+                          <ChevronRight className="w-5 h-5" />
+                        </button>
+                      </div>
+                      
+                      <div className="space-y-3">
+                        <h3 className="font-medium text-primary">Materials List:</h3>
+                        {materials.map((material, index) => (
+                          <div 
+                            key={index} 
+                            className={`p-3 rounded-lg ${
+                              currentImageIndex === index 
+                                ? "bg-primary/20 border border-primary/30" 
+                                : "bg-primary/5"
+                            }`}
+                          >
+                            <p className="font-medium text-primary">{material.name}</p>
+                            {material.color && (
+                              <p className="text-sm text-primary/80">Color: {material.color}</p>
+                            )}
+                            <p className="text-sm text-primary/80">Quantity: {material.quantity}</p>
+                            <p className="text-xs text-primary/70 mt-1">{material.details}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 )}
               </div>
@@ -240,4 +314,3 @@ const ProjectStatus = () => {
 };
 
 export default ProjectStatus;
-
