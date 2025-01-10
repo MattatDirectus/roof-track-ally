@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { Card } from './ui/card';
+import { Card } from "@/components/ui/card";
 import { Map } from 'lucide-react';
-import { Input } from './ui/input';
+import { Input } from "@/components/ui/input";
 
 const MaterialsTrackingMap = () => {
   const mapContainer = useRef<HTMLDivElement>(null);
@@ -96,7 +96,7 @@ const MaterialsTrackingMap = () => {
             <Input
               type="text"
               placeholder="Enter Mapbox token..."
-              value=pk.eyJ1IjoibWF0dG1pbm9yMSIsImEiOiJjbTVxNjZxemQwOGlyMnZvdG1ubTQxejE1In0._d2EnS_yLWAE9TafnMDYFg
+              value={mapboxToken}
               onChange={(e) => setMapboxToken(e.target.value)}
               className="w-full"
             />
