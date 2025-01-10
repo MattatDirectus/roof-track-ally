@@ -1,13 +1,6 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
-
-interface Material {
-  name: string;
-  color?: string;
-  quantity: string;
-  details: string;
-  image: string;
-}
+import { Material } from "@/types/project";
 
 interface MaterialsGalleryProps {
   materials: Material[];

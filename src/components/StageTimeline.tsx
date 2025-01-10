@@ -1,15 +1,5 @@
 import { Calendar, LucideIcon } from "lucide-react";
-
-interface Stage {
-  id: number;
-  title: string;
-  icon: LucideIcon;
-  date: string;
-  details: string;
-  status: "completed" | "in-progress" | "pending";
-  notification?: string;
-  summary: string;
-}
+import { Stage } from "@/types/project";
 
 interface StageTimelineProps {
   stages: Stage[];

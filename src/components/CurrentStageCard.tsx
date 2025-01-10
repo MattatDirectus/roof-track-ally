@@ -1,24 +1,6 @@
 import { LucideIcon } from "lucide-react";
 import MaterialsGallery from "./MaterialsGallery";
-
-interface Material {
-  name: string;
-  color?: string;
-  quantity: string;
-  details: string;
-  image: string;
-}
-
-interface Stage {
-  id: number;
-  title: string;
-  icon: LucideIcon;
-  date: string;
-  details: string;
-  status: "completed" | "in-progress" | "pending";
-  notification?: string;
-  summary: string;
-}
+import { Material, Stage } from "@/types/project";
 
 interface CurrentStageCardProps {
   stage: Stage;
