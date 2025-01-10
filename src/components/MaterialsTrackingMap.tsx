@@ -96,7 +96,7 @@ const MaterialsTrackingMap = () => {
             <Input
               type="text"
               placeholder="Enter Mapbox token..."
-              value={mapboxToken}
+              value=pk.eyJ1IjoibWF0dG1pbm9yMSIsImEiOiJjbTVxNjZxemQwOGlyMnZvdG1ubTQxejE1In0._d2EnS_yLWAE9TafnMDYFg
               onChange={(e) => setMapboxToken(e.target.value)}
               className="w-full"
             />
