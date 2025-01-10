@@ -1,9 +1,9 @@
-import { Calendar, Icon } from "lucide-react";
+import { Calendar, LucideIcon } from "lucide-react";
 
 interface Stage {
   id: number;
   title: string;
-  icon: Icon;
+  icon: LucideIcon;
   date: string;
   details: string;
   status: "completed" | "in-progress" | "pending";

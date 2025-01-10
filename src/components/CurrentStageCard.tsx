@@ -1,4 +1,4 @@
-import { Icon } from "lucide-react";
+import { LucideIcon } from "lucide-react";
 import MaterialsGallery from "./MaterialsGallery";
 
 interface Material {
@@ -12,7 +12,7 @@ interface Material {
 interface Stage {
   id: number;
   title: string;
-  icon: Icon;
+  icon: LucideIcon;
   date: string;
   details: string;
   status: "completed" | "in-progress" | "pending";

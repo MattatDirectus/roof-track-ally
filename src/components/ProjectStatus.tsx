@@ -41,7 +41,7 @@ const ProjectStatus = () => {
       icon: Calendar, 
       date: "Mar 15, 2024", 
       details: "Virtual consultation completed",
-      status: "completed",
+      status: "completed" as const,
       summary: "During our virtual consultation, we discussed your roofing needs and concerns. We assessed the current condition of your 20-year-old asphalt shingle roof and identified signs of wear, particularly around the chimney flashing. You expressed interest in upgrading to GAF Timberline HDZ architectural shingles in Charcoal. We also reviewed warranty options and discussed the timeline for completion."
     },
     { 
@@ -50,7 +50,7 @@ const ProjectStatus = () => {
       icon: Package, 
       date: "Mar 20, 2024", 
       details: "GAF Timberline HDZ Shingles",
-      status: "in-progress",
+      status: "in-progress" as const,
       notification: "Materials arriving in 3 days",
       summary: "We've placed the order for your roofing materials with our trusted supplier. The package includes GAF Timberline HDZ architectural shingles in Charcoal, synthetic underlayment, ice and water shield for vulnerable areas, and new flashing components. All materials are scheduled for delivery to your property on March 20th."
     },
@@ -60,7 +60,7 @@ const ProjectStatus = () => {
       icon: Clock, 
       date: "Apr 5, 2024", 
       details: "Weather permitting",
-      status: "pending",
+      status: "pending" as const,
       summary: "Installation is scheduled to begin on April 5th, with an estimated completion time of 2-3 days, weather permitting. Our team will arrive at 7:30 AM to set up safety equipment and begin the tear-off process. We've coordinated with local weather services to ensure optimal conditions for your installation."
     },
     { 
@@ -69,7 +69,7 @@ const ProjectStatus = () => {
       icon: CheckCircle2, 
       date: "Apr 8, 2024", 
       details: "Final inspection and cleanup",
-      status: "pending",
+      status: "pending" as const,
       summary: "Upon completion, our team will conduct a thorough final inspection, ensure complete site cleanup, and walk you through the finished project. We'll provide documentation of the installation, warranty information, and maintenance guidelines. A follow-up inspection will be scheduled after the first significant rainfall."
     }
   ];
