@@ -16,7 +16,7 @@ const MaterialsTrackingMap = () => {
     if (!mapContainer.current || mapInstance.current) return;
 
     // Replace 'YOUR_MAPBOX_PUBLIC_TOKEN' with your actual public token
-    mapboxgl.accessToken = 'YOUR_MAPBOX_PUBLIC_TOKEN';
+    mapboxgl.accessToken = 'pk.eyJ1IjoibWF0dG1pbm9yMSIsImEiOiJjbTVxNjZxemQwOGlyMnZvdG1ubTQxejE1In0._d2EnS_yLWAE9TafnMDYFg';
     
     mapInstance.current = new mapboxgl.Map({
       container: mapContainer.current,
